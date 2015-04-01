@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 映射器配置文件 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+namespace 的值被设置成 StudentMapper 接口的完全限定名，使得程序可以使用接口来调用映射的 SQL 语句。
+-->
+<mapper namespace="quickstart.StudentMapper">
+
+	<resultMap type="Student" id="StudentResult">
+		<id property="studId" column="id" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="dob" column="dob" />
+	</resultMap>
+
+	<select id="findAllStudents" resultMap="StudentResult">
+		SELECT * FROM STUDENTS
+	</select>
+
+	<select id="findStudentById" parameterType="int" resultType="Student">
+		SELECT ID AS STUDID, NAME, EMAIL, DOB
+		FROM STUDENTS WHERE ID=#{Id}
+	</select>
+
+	<insert id="insertStudent" parameterType="Student">
+		INSERT INTO STUDENTS(ID,NAME,EMAIL,DOB)
+		VALUES(#{studId},#{name},#{email},#{dob})
+	</insert>
+</mapper>

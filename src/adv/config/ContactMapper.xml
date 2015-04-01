@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+映射器配置文件 
+在代码里直接嵌套 SQL 语句是很差的编码实践，并且维护起来困难。 MyBaits 使用了映射器配置文件或注解来配置 SQL 语句。
+-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+namespace 的值被设置成 ContactMapper 接口的完全限定名，使得程序可以使用接口来调用映射的 SQL 语句。
+-->
+<mapper namespace="config.ContactMapper">
+
+	<select id="findAllContacts" resultType="contact">
+		SELECT * FROM CONTACTS
+	</select>
+
+	<!--  
+	在 SQL Mapper 映射文件中, 如下使用 Contact 的别名：
+	-->
+	<select id="findContactById" parameterType="int" resultType="contact">
+		SELECT ID AS ID, NAME, EMAIL
+		FROM CONTACTS WHERE ID=#{Id}
+	</select>
+
+	<insert id="insertContact" parameterType="contact">
+		INSERT INTO CONTACTS(ID,NAME,EMAIL)
+		VALUES(#{Id},#{name},#{email})
+	</insert>
+</mapper>

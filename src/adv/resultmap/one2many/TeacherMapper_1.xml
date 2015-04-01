@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 一对多映射的第一种配置方式：嵌套结果 ResultMap -->
+<mapper namespace="resultmap.one2many.TeacherMapper_1">
+
+	<resultMap type="teacher" id="TeacherResult">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="email" property="email" />
+		<!-- <collection>元素的 resultMap 属性设置成了 CourseResult，CourseResult 包含了 Course 对象属性与表列名之间的映射。 -->
+		<collection property="courses" resultMap="CourseResult" />
+	</resultMap>
+	
+	<resultMap type="course" id="CourseResult">
+		<id column="cid" property="id" />
+		<result column="cname" property="name" />
+	</resultMap>
+	
+	<select id="findTeacherById" parameterType="int" resultMap="TeacherResult">
+		SELECT T.ID as ID, T.NAME as NAME, T.EMAIL as EMAIL, C.ID as CID, C.NAME as CNAME
+		FROM TEACHERS T LEFT OUTER JOIN COURSES C ON T.ID=C.TEACHER_ID
+		WHERE T.ID=#{Id}
+	</select>
+
+</mapper>

@@ -1,0 +1,45 @@
+
+MyBatis 在其内部使用 JDBC，提供了更简洁的方式实现了数据库操作。
+
+当 MyBatis 将一个 Java 对象作为输入参数执行 INSERT 语句操作时，它会创建一个 PreparedStatement 对象，并且使用 setXXX()方式对占位符设置相应的参数值。
+这里的 XXX 可以是 Int，String，Date 等 Java 对象类型的任意一个。
+
+比如：
+<insert id="insertStudent" parameterType="Student">
+INSERT INTO STUDENTS(STUD_ID,NAME,EMAIL,DOB)
+VALUES(#{studId},#{name},#{email},#{dob})
+</insert>
+
+为执行这个语句，MyBatis 将采取以下一系列动作：
+1，创建一个有占位符的 PreparedStatement 接口，如下：
+PreparedStatement pstmt = connection.prepareStatement("INSERT INTO STUDENTS(STUD_ID,NAME,EMAIL,DOB) VALUES(?,?,?,?)");
+
+2，检查 Student 对象的属性 studId 的类型，然后使用合适 setXXX 方法去设置参数值。这里 studId 是 integer类型，所以会使用 setInt()方法：
+pstmt.setInt(1,student.getStudId());
+
+3，类似地，对于 name 和 email 属性都是 String 类型，MyBatis 使用 setString()方法设置参数。
+pstmt.setString(2, student.getName());
+pstmt.setString(3, student.getEmail());
+
+4，至于 dob 属性, MyBatis 会使用 setDate() 方法设值。MyBaits 会将 java.util.Date 类型转换为 into java.sql.Timestamp 并设值：
+pstmt.setTimestamp(4, new Timestamp((student.getDob()).getTime()));
+
+
+MyBatis 是怎么知道对于 Integer 类型属性使用 setInt() 和 String 类型属性使用 setString()方法呢？
+其实 MyBatis 是通过使用类型处理器（type handlers）来决定这么做的。
+
+
+MyBatis 对于以下的类型使用内建的类型处理器：
+所有的基本数据类型、基本类型的包裹类型、byte[] 、java.util.Date、java.sql.Date、java,sql.Time、java.sql.Timestamp、java 枚举类型等。
+所以当 MyBatis 发现上述类型的属性时，就会使用对应的类型处理器将值设置到 PreparedStatement 中；同样的，当从 SQL 结果集构建 JavaBean 时，也有类似的过程。
+
+
+如果有一个自定义对象类型的属性，该如何存储到数据库中？比如 Contact 类中的 PhoneNumber 对象，其 插入SQL定义如下：
+<insert id="insertStudent" parameterType="Student">
+insert into students(name,email,phone)
+values(#{name},#{email},#{phone})
+</insert>
+
+phone 对象需要传递给#{phone}，而 phone 对象是 PhoneNumber 类型，而 MyBatis 并不知道该怎样来处理这个类型的对象。
+为了让 MyBatis 明白怎样处理这个自定义的 Java 对象类型，可以创建一个自定义的类型处理器，如 PhoneTypeHandler。
+然后再将 PhoneTypeHandler 注册到 mybatis-config.xml 配置文件中，这样 MyBatis 就能够将 PhoneNumber 类型的对象值存储到 VARCHAR 类型的列上。

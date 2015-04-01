@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="more.parameters.ContactMapper">
+
+	<!-- 
+	MyBatis 中的映射语句有一个 parameterType 属性来制定输入参数的类型。
+	如果想给 SQL 传入多个参数的话，可以将所有的输入参数放到 HashMap 中再传递给映射语句。
+	-->
+	<select id="findContactByConditionUseMap" parameterType="map" resultType="contact">
+		SELECT * FROM CONTACTS WHERE NAME=#{Name} AND EMAIL=#{Email}
+	</select>
+	
+	<!--  
+	MyBatis 支持将多个输入参数传递给映射语句，并以#{param}的语法形式引用它们。
+	其中 #{param1} 引用第一个参数，#{param2} 引用第二个参数，以此类推。 
+	-->
+	<select id="findContactByCondition" resultType="contact">
+		SELECT * FROM CONTACTS WHERE NAME=#{param1} AND EMAIL=#{param2}
+	</select>
+
+</mapper>

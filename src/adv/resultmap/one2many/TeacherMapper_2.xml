@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 一对多映射的第二种配置方式：嵌套查询 -->
+<mapper namespace="resultmap.one2many.TeacherMapper_2">
+
+	<resultMap type="teacher" id="TeacherResult">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="email" property="email" />
+		<!-- 
+		<collection>元素的 select 属性被设置为 id 为 findCoursesByTeacher 的语句，用来触发单独的 SQL 查询加载课程信息。
+		id 这一列值将会作为输入参数传递给 findCoursesByTeacher 语句。
+		
+		嵌套 select 语句查询会导致 N+1 选择问题：
+		首先，主查询将会执行（1 次） ，对于主查询返回的每一行，另外一个查询将会被执行（主查询 N 行，则此查询 N 次） 。
+		对于大型数据库而言，这会导致很差的性能问题。 
+		-->
+		<collection property="courses" column="id" select="findCoursesByTeacher" />
+	</resultMap>
+	
+	<resultMap type="course" id="CourseResult">
+		<id column="cid" property="id" />
+		<result column="cname" property="name" />
+	</resultMap>
+
+	<select id="findTeacherById" parameterType="int" resultMap="TeacherResult">
+		SELECT ID, NAME, EMAIL
+		FROM TEACHERS
+		WHERE ID=#{Id}
+	</select>
+	
+	<select id="findCoursesByTeacher" parameterType="int" resultMap="CourseResult">
+		SELECT * FROM COURSES WHERE TEACHER_ID=#{Id}
+	</select>
+
+</mapper>

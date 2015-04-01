@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.StudentMapper">
+
+	<!-- insert 元素用来配置 INSERT 语句，parameterType 属性应该是一个完全限定类名或者是一个类型别名（alias） 。 -->
+	<insert id="insertStudent" parameterType="mapper.Student">
+		INSERT INTO STUDENTS(ID,NAME,EMAIL, PHONE)
+		VALUES(#{Id},#{name},#{email},#{phone})
+	</insert>
+
+	<!-- update 元素用来配置 INSERT 语句 -->
+	<update id="updateStudent" parameterType="mapper.Student">
+		UPDATE STUDENTS SET NAME=#{name}, EMAIL=#{email}, PHONE=#{phone}
+		WHERE ID=#{Id}
+	</update>
+
+	<!-- delete 元素用来配置 INSERT 语句 -->
+	<delete id="deleteStudent" parameterType="int">
+		DELETE FROM STUDENTS WHERE ID=#{Id}
+	</delete>
+
+	<!-- select 元素用来配置 SELECT 语句 -->
+	<select id="findStudentById" parameterType="int" resultType="mapper.Student">
+		<!-- MyBatis 可以将数据自动填充到JavaBean中，如果列名和JavaBean的属性名不一致，则需要使用列别名 -->
+		SELECT ID AS STUDID, NAME, EMAIL, DOB
+		FROM STUDENTS WHERE ID=#{Id}
+	</select>
+	
+	<!-- 可以使用 ResultMaps，来避免上做法造成到处都是重复别名的问题。 -->
+
+</mapper>

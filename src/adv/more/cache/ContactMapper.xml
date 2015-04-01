@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 一个缓存的配置和缓存实例被绑定到映射器配置文件所在的 namespace 上，所以同一个 namespace 的所有语句被绑定到同一个 cache 中。  -->
+<mapper namespace="more.cache.ContactMapper">
+
+	<!-- 
+	可以在 SQL Mapper 文件中使用<cache />元素添加全局二级缓存。 
+	当你加入了<cache />元素，将会出现以下情况：
+	1,映射语句文件中的所有 select 语句将会被缓存。
+	2,映射语句文件中的所有 insert,update 和 delete 语句会刷新缓存。
+	3,缓存会使用 Least Recently Used（LRU 最近最少使用的）算法来收回。
+	4,缓存不会被任何形式的基于时间表的刷新（没有刷新时间间隔） ，即不支持定时刷新机制。
+	5,缓存会存储列表集合或对象(无论查询方法返回什么)的 1024 个引用。
+	6,缓存会被视为是 read/write(可读/可写)的缓存，意味着对象检索不是共享的。
+	而且可以安全地被调用者修改，而不干扰其他调用者或线程所做的潜在修改。（即线程安全的）
+	-->
+	
+	<!-- 可以通过修改默认属性来自定义缓存的行为 
+	eviction
+	此处定义缓存的移除机制。默认值是 LRU，其可能的值有：
+	LRU（least recently used,最近最少使用）
+	FIFO（first in first out,先进先出）
+	SOFT（soft reference,软引用）
+	WEAK（weak reference,弱引用）
+	
+	flushInterval
+	定义缓存刷新间隔，以毫秒为单位。默认情况下不设置，所以不使用刷新间隔，缓存只有调用CUD语句的时候刷新。
+	
+	size
+	表示缓存中能容纳的最大元素数。默认值是 1024，可以设置成任意的正整数。
+	
+	readOnly
+	一个只读的缓存会对所有的调用者返回被缓存对象的同一个实例（实际返回的是对象的一个引用）。
+	一个读/写缓存将会返回对象的一分拷贝（通过序列化） 。
+	默认情况下设置为 false，可能的值有 false 和 true。
+	-->
+	<cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
+
+	<!-- 可以为任意特定的映射语句设置默认的 cache 行为 -->
+	<select id="findAllContacts" resultType="contact" flushCache="false" useCache="true" >
+		SELECT * FROM CONTACTS 
+	</select>
+	
+</mapper>

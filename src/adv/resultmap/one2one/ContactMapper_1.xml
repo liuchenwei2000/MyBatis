@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 
+一对一映射的第一种配置方式 
+第一种配置方式的缺点：
+如果 address 结果需要在其他的 SELECT 映射语句中映射成 Address 对象，那就需要为每一个语句重复这种映射关系。 
+MyBatis 提供了更好地实现一对一关联映射的方法：嵌套结果 ResultMap 和嵌套 select 查询语句。
+-->
+<mapper namespace="resultmap.one2one.ContactMapper_1">
+
+	<resultMap type="Contact" id="contactWithAddressResult">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<!-- 可以使用圆点语法访问内嵌对象的属性  -->
+		<result property="address.id" column="addr_id" />
+		<result property="address.street" column="street" />
+		<result property="address.city" column="city" />
+		<result property="address.country" column="country" />
+	</resultMap>
+	
+	<select id="selectContactWithAddress" parameterType="int" resultMap="contactWithAddressResult">
+		SELECT T0.ID as ID, NAME, EMAIL, T1.ID as ADDR_ID, STREET, CITY, COUNTRY
+		FROM CONTACTS T0 LEFT OUTER JOIN ADDRESS T1 
+		ON T0.ADDRESS=T1.ID
+		WHERE T0.ID=#{Id}
+	</select>
+	
+</mapper>

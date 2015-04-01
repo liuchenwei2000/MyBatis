@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="resultmap.ContactMapper">
+
+	<!-- ResultMaps 被用来将 SQL SELECT 语句的结果集映射到 JavaBeans 的属性中。 -->
+	<!-- id 值应该在此 namespace 内是唯一的，并且 type 属性应该是完全限定类名或者是返回类型的别名。 -->
+	<resultMap type="contact" id="ContactResult">
+		<!-- <id>元素和<result>元素功能相同，不过它被用来映射到唯一标识属性， 用来区分和比较对象（一般和主键列相对应）。 -->
+		<id property="id" column="id" />
+		<!-- <result>子元素被用来将一个 resultset 列映射到 JavaBean 的一个属性中。  -->
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+	</resultMap>
+	
+	<!-- 可以从一个 resultMap 扩展出一个新的 resultMap，这样原先的属性映射就可以继承过来。 -->
+	<resultMap type="contact" id="ContactWithAddressResult" extends="ContactResult">
+		<result property="address.id" column="addr_id" />
+		<result property="address.street" column="street" />
+		<result property="address.city" column="city" />
+		<result property="address.country" column="country" />
+	</resultMap>
+
+	<!-- 
+	当<select>语句中配置了 resutlMap 属性，MyBatis 会使用此数据库列名与对象属性映射关系来填充 JavaBean 中的属性。
+	resultType 和 resultMap 二者只能用其一，不能同时使用。 
+	-->
+	<!-- 如果只想映射 Contact 的数据，可以使用 id 为 ContactResult 的 resultMap -->
+	<select id="findAllContacts" resultMap="ContactResult">
+		SELECT * FROM CONTACTS
+	</select>
+
+	<!-- 
+	将 resultType 配置成 map，即 java.util.HashMap 的别名。
+	在这种情况下， 结果集的列名将会作为 Map 中的 key 值，而列值将作为 Map 的 value 值。
+	-->
+	<select id="findContactById" parameterType="int" resultType="map">
+		SELECT * FROM CONTACTS WHERE ID=#{Id}
+	</select>
+
+	<!-- 使用 resultType=”map” 也可以返回多行结果 -->
+	<select id="findAllContactsMap" resultType="map">
+		SELECT ID, NAME, EMAIL FROM CONTACTS
+	</select>
+	
+	<!-- 如果想映射 Contact 数据和 Address 数据，可以使用 id 为 ContactWithAddressResult 的 resultMap。 -->
+	<select id="findContactWithAddressById" parameterType="int" resultMap="ContactWithAddressResult">
+		SELECT T0.ID as ID, NAME, EMAIL, T1.ID as ADDR_ID, STREET, CITY, COUNTRY
+		FROM CONTACTS T0 LEFT OUTER JOIN ADDRESS T1 
+		ON T0.ADDRESS=T1.ID
+		WHERE T0.ID=#{Id}
+	</select>
+</mapper>

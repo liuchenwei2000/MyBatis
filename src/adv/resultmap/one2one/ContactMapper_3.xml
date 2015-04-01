@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 一对一映射的第三种配置方式：嵌套查询 -->
+<mapper namespace="resultmap.one2one.ContactMapper_3">
+
+	<resultMap type="address" id="AddressResult">
+		<id property="id" column="id" />
+		<result property="street" column="street" />
+		<result property="city" column="city" />
+		<result property="country" column="country" />
+	</resultMap>
+
+	<select id="findAddressByID" parameterType="int" resultMap="AddressResult">
+		SELECT * FROM ADDRESS WHERE ID=#{id}
+	</select>
+
+	<!--  
+	<association>元素的  select 属性被设置成了 id 为  findAddressById 的语句。这样一来，两个分开的 SQL 语句将会在数据库中执行：
+	第一个调用 findContactById 加载 Contact 信息，而第二个调用 findAddressById 来加载 address 信息。
+	address 列的值将会被作为输入参数传递给 findAddressById 语句。
+	-->
+	<resultMap type="Contact" id="ContactWithAddressResult">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<association property="address" column="address" select="findAddressByID" />
+	</resultMap>
+
+	<select id="findContactWithAddress" parameterType="int"
+		resultMap="ContactWithAddressResult">
+		SELECT * FROM CONTACTS WHERE ID=#{Id}
+	</select>
+
+</mapper>

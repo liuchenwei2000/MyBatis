@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="more.enums.DoctorMapper">
+
+	<!-- 当执行 insertDoctor 语句的时候， MyBatis 会取 Gender 枚举的名称（FEMALE/MALE） ， 然后将其存储到 GENDER 列中。 -->
+	<insert id="insertDoctor" parameterType="doctor">
+		INSERT INTO DOCTORS(NAME,EMAIL,GENDER) 
+		VALUES(#{name},#{email},#{gender})
+	</insert>
+	
+	<!-- 
+	如果希望存储 enum 元素的索引而不是 enum 名称，则需要明确地在 mybatis-config.xml 文件 中配置 EnumOrdinalTypeHandler。 
+	<typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="more.enums.Gender"/>
+	-->
+
+</mapper>
