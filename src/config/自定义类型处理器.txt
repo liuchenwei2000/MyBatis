@@ -35,8 +35,8 @@ MyBatis 对于以下的类型使用内建的类型处理器：
 
 
 如果有一个自定义对象类型的属性，该如何存储到数据库中？比如 Contact 类中的 PhoneNumber 对象，其 插入SQL定义如下：
-<insert id="insertStudent" parameterType="Student">
-insert into students(name,email,phone)
+<insert id="insertContact" parameterType="Contact">
+insert into contacts(name,email,phone)
 values(#{name},#{email},#{phone})
 </insert>
 

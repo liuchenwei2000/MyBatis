@@ -27,6 +27,6 @@
 		FROM STUDENTS WHERE ID=#{Id}
 	</select>
 	
-	<!-- 可以使用 ResultMaps，来避免上做法造成到处都是重复别名的问题。 -->
+	<!-- 可以使用 ResultMaps，来避免上述做法造成到处都是重复别名的问题。 -->
 
 </mapper>

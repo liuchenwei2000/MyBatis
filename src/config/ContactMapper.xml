@@ -14,9 +14,7 @@ namespace 的值被设置成 ContactMapper 接口的完全限定名，使得程�
 		SELECT * FROM CONTACTS
 	</select>
 
-	<!--  
-	在 SQL Mapper 映射文件中, 如下使用 Contact 的别名：
-	-->
+	<!-- 在 SQL Mapper 映射文件中, 如下使用 Contact 的别名：-->
 	<select id="findContactById" parameterType="int" resultType="contact">
 		SELECT ID AS ID, NAME, EMAIL
 		FROM CONTACTS WHERE ID=#{Id}
