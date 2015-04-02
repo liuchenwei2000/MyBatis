@@ -8,7 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import util.MyBatisUtil;
 
 /**
- * 持久化 enum 类型的字段
+ * 持久化 enum 类型的字段 
  * 
  * @author 刘晨伟
  * 

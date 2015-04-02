@@ -24,7 +24,7 @@ public class MyBatisUtil {
 		
 		// 全局唯一的 SqlSessionFactory
 		private static SqlSessionFactory sqlSessionFactory;
-		
+		 
 		static {
 			InputStream inputStream = null;
 			try {

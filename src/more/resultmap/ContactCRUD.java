@@ -17,7 +17,7 @@ import util.MyBatisUtil;
  * 
  * @author 刘晨伟
  * 
- * 创建日期：2015年3月9日
+ * 创建日期：2015年3月9日 
  */
 public class ContactCRUD {
 	

@@ -19,10 +19,10 @@ import annotation.dynamicSQL.Customer.Gender;
 public class CustomerSelectProvider {
 	
 	/**
-	 * 动态 SQL provider 方法可以接收以下其中一种参数：
-	 * 和映射器 Mapper 接口的方法同类型的参数;
-	 * 无参数;
-	 * java.util.Map。
+	 * 动态 SQL provider 方法可以接收的参数有：
+	 * 1，和映射器 Mapper 接口的方法同类型的参数;
+	 * 2，无参数;
+	 * 3，java.util.Map。
 	 */
 
 	public String findCustomerByGender(Gender gender) {// 和映射器 Mapper 接口的方法同类型的参数
@@ -45,7 +45,6 @@ public class CustomerSelectProvider {
 	/**
 	 * 如果映射器 Mapper 接口有多个输入参数，可以使用参数类型为 java.util.Map 的方法作为 SQL provider 方法。
 	 * 然后映射器 Mapper 接口方法所有的输入参数将会被放到 map 中，以 param1, param2 等等作为 key，将输入参数按序作为 value。
-	 * 也可以使用  0,1,2 等作为 key 值来取的输入参数。
 	 */
 	public String findByCondition(Map<String, Object> map) {// java.util.Map
 		final String name = (String) map.get("param1");

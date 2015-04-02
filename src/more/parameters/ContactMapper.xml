@@ -18,5 +18,4 @@
 	<select id="findContactByCondition" resultType="contact">
 		SELECT * FROM CONTACTS WHERE NAME=#{param1} AND EMAIL=#{param2}
 	</select>
-
 </mapper>

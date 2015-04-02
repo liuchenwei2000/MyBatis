@@ -124,7 +124,7 @@ public class AuthorCRUD {
 	}
 	
 	/**
-	 * 基本的 DELETE 语句
+	 * 基本的 SELECT 语句
 	 */
 	private static void testSelectAuthor(){
 		SqlSession sqlSession = MyBatisUtil.openSession();

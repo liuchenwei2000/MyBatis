@@ -26,7 +26,7 @@ import annotation.Book;
 public interface BookMapper {
 	
 	/**
-	 * 使用表别名进行结果集映射
+	 * 使用别名进行结果集映射
 	 */
 	@Select("select id, name as title, isbn from books")
 	public List<Book> findAllBooksUsingAlias();

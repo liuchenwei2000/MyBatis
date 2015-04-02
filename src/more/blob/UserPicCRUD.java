@@ -46,7 +46,6 @@ public class UserPicCRUD {
 			is = new FileInputStream(new File("files/cross.png"));
 			pic = new byte[is.available()];
 			is.read(pic);
-			is.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

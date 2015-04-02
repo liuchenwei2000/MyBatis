@@ -13,7 +13,7 @@
 		id 这一列值将会作为输入参数传递给 findCoursesByTeacher 语句。
 		
 		嵌套 select 语句查询会导致 N+1 选择问题：
-		首先，主查询将会执行（1 次） ，对于主查询返回的每一行，另外一个查询将会被执行（主查询 N 行，则此查询 N 次） 。
+		首先，主查询将会执行（1 次） ，对于主查询返回的每一行，另外一个查询将会被执行（主查询 N 行，则子查询 N 次） 。
 		对于大型数据库而言，这会导致很差的性能问题。 
 		-->
 		<collection property="courses" column="id" select="findCoursesByTeacher" />

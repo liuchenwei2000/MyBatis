@@ -6,7 +6,7 @@
 
 	<!-- 
 	可以在 SQL Mapper 文件中使用<cache />元素添加全局二级缓存。 
-	当你加入了<cache />元素，将会出现以下情况：
+	当加入了<cache />元素，将会出现以下情况：
 	1,映射语句文件中的所有 select 语句将会被缓存。
 	2,映射语句文件中的所有 insert,update 和 delete 语句会刷新缓存。
 	3,缓存会使用 Least Recently Used（LRU 最近最少使用的）算法来收回。
@@ -37,7 +37,11 @@
 	-->
 	<cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
 
-	<!-- 可以为任意特定的映射语句设置默认的 cache 行为 -->
+	<!-- 
+	可以为任意特定的映射语句设置默认的 cache 行为 
+	flushCache：将其设置为 true，任何时候只要语句被调用，都会导致本地缓存和二级缓存都会被清空，默认值：false。
+	useCache：将其设置为 true，将会导致本条语句的结果被二级缓存，默认值：对 select 元素为 true。
+	-->
 	<select id="findAllContacts" resultType="contact" flushCache="false" useCache="true" >
 		SELECT * FROM CONTACTS 
 	</select>

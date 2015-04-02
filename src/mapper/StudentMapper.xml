@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.StudentMapper">
-
+ 
 	<!-- insert 元素用来配置 INSERT 语句，parameterType 属性应该是一个完全限定类名或者是一个类型别名（alias） 。 -->
 	<insert id="insertStudent" parameterType="mapper.Student">
 		INSERT INTO STUDENTS(ID,NAME,EMAIL, PHONE)
