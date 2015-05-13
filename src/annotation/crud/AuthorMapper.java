@@ -5,6 +5,7 @@ package annotation.crud;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
@@ -65,4 +66,10 @@ public interface AuthorMapper {
 	 */
 	@Select("select * from authors where id=#{id}")
 	public Author findAuthorById(int id);
+	
+	/**
+	 * 方法列表有多个参数时，使用 @Param 注解来定义各自的标识
+	 */
+	@Select("select * from authors where name=#{name} and email=#{email}")
+	public Author findAuthorBy(@Param("name") String name, @Param("email") String email);
 }
