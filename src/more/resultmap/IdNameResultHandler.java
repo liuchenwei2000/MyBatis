@@ -12,14 +12,14 @@ import org.apache.ibatis.session.ResultHandler;
 import resultmap.Contact;
 
 /**
- * ×Ô¶¨Òå ResultHandler Ê¾Àı
+ * è‡ªå®šä¹‰ ResultHandler ç¤ºä¾‹
  * <p>
- * ÓĞÊ±ºò»áÓöµ½ÓÉÓÚÌØ¶¨µÄÄ¿µÄĞèÒª×Ô¼º´¦Àí SQL ²éÑ¯½á¹ûµÄÇé¿ö£¬¿ÉÒÔÊµÏÖ×Ô¶¨ÒåµÄ ResultHandler ÒÔÈÎºÎ×Ô¼ºµÄ·½Ê½´¦Àí½á¹û¼¯¡£
- * ±¾Àı½«»á°Ñ½á¹û¼¯Ó³Éä³É ÒÔ contact µÄ id ×÷Îª key£¬name ×÷Îª value µÄ HashMap¡£
+ * æœ‰æ—¶å€™ä¼šé‡åˆ°ç”±äºç‰¹å®šçš„ç›®çš„éœ€è¦è‡ªå·±å¤„ç† SQL æŸ¥è¯¢ç»“æœçš„æƒ…å†µï¼Œå¯ä»¥å®ç°è‡ªå®šä¹‰çš„ ResultHandler ä»¥ä»»ä½•è‡ªå·±çš„æ–¹å¼å¤„ç†ç»“æœé›†ã€‚
+ * æœ¬ä¾‹å°†ä¼šæŠŠç»“æœé›†æ˜ å°„æˆ ä»¥ contact çš„ id ä½œä¸º keyï¼Œname ä½œä¸º value çš„ HashMapã€‚
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê3ÔÂ9ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´3æœˆ9æ—¥
  */
 public class IdNameResultHandler implements ResultHandler {
 	
@@ -30,7 +30,7 @@ public class IdNameResultHandler implements ResultHandler {
 	}
 
 	/**
-	 * ÊµÏÖ¸Ã·½·¨ÒÔ´¦Àí½á¹û¼¯£¬¶Ô²éÑ¯·µ»ØµÄÃ¿Ò»ĞĞ¶¼»áµ÷ÓÃ±¾·½·¨½øĞĞ´¦Àí
+	 * å®ç°è¯¥æ–¹æ³•ä»¥å¤„ç†ç»“æœé›†ï¼Œå¯¹æŸ¥è¯¢è¿”å›çš„æ¯ä¸€è¡Œéƒ½ä¼šè°ƒç”¨æœ¬æ–¹æ³•è¿›è¡Œå¤„ç†
 	 * 
 	 * @see org.apache.ibatis.session.ResultHandler#handleResult(org.apache.ibatis.session.ResultContext)
 	 */
@@ -41,7 +41,7 @@ public class IdNameResultHandler implements ResultHandler {
 	}
 	
 	/**
-	 * ·µ»Ø´¦ÀíºóµÄ½á¹û¼¯
+	 * è¿”å›å¤„ç†åçš„ç»“æœé›†
 	 */
 	public Map<Integer, String> getResultMap() {
 		return id_name_map;

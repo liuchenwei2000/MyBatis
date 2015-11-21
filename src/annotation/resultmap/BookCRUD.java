@@ -11,11 +11,11 @@ import util.MyBatisUtil;
 import annotation.Book;
 
 /**
- * »ùÓÚ×¢½âµÄ½á¹ûÓ³ÉäÊ¹ÓÃÊ¾Àı
+ * åŸºäºæ³¨è§£çš„ç»“æœæ˜ å°„ä½¿ç”¨ç¤ºä¾‹
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê3ÔÂ12ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´3æœˆ12æ—¥
  */
 public class BookCRUD {
 	
@@ -32,21 +32,21 @@ public class BookCRUD {
 	}
 	
 	/**
-	 * Ê¹ÓÃ±í±ğÃûµÄ½á¹ûÓ³Éä
+	 * ä½¿ç”¨è¡¨åˆ«åçš„ç»“æœæ˜ å°„
 	 */
 	private static void testFindAllBooksUsingAlias(){
 		SqlSession sqlSession = MyBatisUtil.openSession();
 		try {
 			BookMapper mapper = sqlSession.getMapper(BookMapper.class);
 			List<Book> books = mapper.findAllBooksUsingAlias();
-			System.out.println("books£º" + books);
+			System.out.println("booksï¼š" + books);
 		} finally {
 			sqlSession.close();
 		}
 	}
 	
 	/** 
-	 * Ê¹ÓÃ @Result ×¢½âµÄ½á¹ûÓ³Éä
+	 * ä½¿ç”¨ @Result æ³¨è§£çš„ç»“æœæ˜ å°„
 	 */
 	private static void testFindAllBooksUsingResults(){
 		SqlSession sqlSession = MyBatisUtil.openSession();
@@ -54,8 +54,8 @@ public class BookCRUD {
 			BookMapper mapper = sqlSession.getMapper(BookMapper.class);
 			List<Book> books = mapper.findAllBooksUsingResults();
 			for (Book book : books) {
-				System.out.println("book£º" + book);
-				System.out.println("awards£º" + book.getAwards());
+				System.out.println("bookï¼š" + book);
+				System.out.println("awardsï¼š" + book.getAwards());
 				System.out.println();
 			}
 		} finally {
@@ -64,14 +64,14 @@ public class BookCRUD {
 	}
 	
 	/** 
-	 * Ê¹ÓÃ @Result ×¢½â ºÍ Mapper ÅäÖÃÎÄ¼şµÄ½á¹ûÓ³Éä
+	 * ä½¿ç”¨ @Result æ³¨è§£ å’Œ Mapper é…ç½®æ–‡ä»¶çš„ç»“æœæ˜ å°„
 	 */
 	private static void testFindAllBooks(){
 		SqlSession sqlSession = MyBatisUtil.openSession();
 		try {
 			BookMapper mapper = sqlSession.getMapper(BookMapper.class);
 			List<Book> books = mapper.findAllBooks();
-			System.out.println("books£º" + books);
+			System.out.println("booksï¼š" + books);
 		} finally {
 			sqlSession.close();
 		}

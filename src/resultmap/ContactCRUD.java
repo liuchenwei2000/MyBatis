@@ -11,11 +11,11 @@ import org.apache.ibatis.session.SqlSession;
 import util.MyBatisUtil;
 
 /**
- * Ê¹ÓÃ½á¹û¼¯Ó³ÉäµÄÊ¾Àı
+ * ä½¿ç”¨ç»“æœé›†æ˜ å°„çš„ç¤ºä¾‹
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ11ÈÕ 
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ11æ—¥ 
  */
 public class ContactCRUD {
 	
@@ -33,9 +33,9 @@ public class ContactCRUD {
 	private static void selectContactById(Integer id) {
 		SqlSession sqlSession = MyBatisUtil.openSession();
 		try {
-			// Ê¹ÓÃ HashMap ×÷Îª½á¹û¼¯
+			// ä½¿ç”¨ HashMap ä½œä¸ºç»“æœé›†
 			Map<String, Object> contactMap = sqlSession.selectOne(
-					"resultmap.ContactMapper.findContactById", id);// Ö´ĞĞSELECTÓï¾ä
+					"resultmap.ContactMapper.findContactById", id);// æ‰§è¡ŒSELECTè¯­å¥
 			System.out.println("id=" + contactMap.get("id"));
 			System.out.println("name=" + contactMap.get("name"));
 			System.out.println("email=" + contactMap.get("email"));
@@ -47,10 +47,10 @@ public class ContactCRUD {
 	private static void selectContacts() {
 		SqlSession sqlSession = MyBatisUtil.openSession();
 		try {
-			// Ê¹ÓÃ HashMap ×÷Îª½á¹û¼¯·µ»Ø¶àĞĞÊı¾İµÄÓÃ·¨
+			// ä½¿ç”¨ HashMap ä½œä¸ºç»“æœé›†è¿”å›å¤šè¡Œæ•°æ®çš„ç”¨æ³•
 			List<Map<String, Object>> students = sqlSession.selectList("resultmap.ContactMapper.findAllContactsMap");
 			for (Map<String, Object> map : students) {
-				System.out.println("id=" + map.get("ID"));// ×¢Òâ key µÄ´óĞ¡Ğ´ÒªºÍ Mapper ÎÄ¼şÖĞµÄ SQL ÁĞÃû±£³ÖÒ»ÖÂ
+				System.out.println("id=" + map.get("ID"));// æ³¨æ„ key çš„å¤§å°å†™è¦å’Œ Mapper æ–‡ä»¶ä¸­çš„ SQL åˆ—åä¿æŒä¸€è‡´
 				System.out.println("name=" + map.get("NAME"));
 				System.out.println("email=" + map.get("EMAIL"));
 			}
@@ -63,7 +63,7 @@ public class ContactCRUD {
 		SqlSession sqlSession = MyBatisUtil.openSession();
 		try {
 			Contact contactWithAddress = sqlSession.selectOne(
-					"resultmap.ContactMapper.findContactWithAddressById", id);// Ö´ĞĞSELECTÓï¾ä
+					"resultmap.ContactMapper.findContactWithAddressById", id);// æ‰§è¡ŒSELECTè¯­å¥
 			System.out.println("contact=" + contactWithAddress);
 			System.out.println("address=" + contactWithAddress.getAddress());
 		} finally {

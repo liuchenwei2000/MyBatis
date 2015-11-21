@@ -13,62 +13,62 @@ import org.apache.ibatis.annotations.Update;
 import annotation.Author;
 
 /**
- * »ùÓÚ×¢½âµÄ Author SQL Óï¾äÓ³Éä
+ * åŸºäºæ³¨è§£çš„ Author SQL è¯­å¥æ˜ å°„
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê3ÔÂ12ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´3æœˆ12æ—¥
  */
 public interface AuthorMapper {
 
 	/**
-	 * Ê¹ÓÃ @Insert ×¢½âÀ´¶¨ÒåÒ»¸ö INSERT Ó³ÉäÓï¾ä£¬¸Ã·½·¨½«·µ»Ø INSERT Óï¾äÖ´ĞĞºóÓ°ÏìµÄĞĞÊı¡£
+	 * ä½¿ç”¨ @Insert æ³¨è§£æ¥å®šä¹‰ä¸€ä¸ª INSERT æ˜ å°„è¯­å¥ï¼Œè¯¥æ–¹æ³•å°†è¿”å› INSERT è¯­å¥æ‰§è¡Œåå½±å“çš„è¡Œæ•°ã€‚
 	 */
 	@Insert("insert into authors(id, name, email) values(#{id},#{name},#{email})")
 	public int insertAuthor(Author author);
 	
 	/**
-	 * ×Ô¶¯Éú³ÉÖ÷¼ü¿ÉÒÔÊ¹ÓÃ @Options ×¢½âµÄ userGeneratedKeys  ºÍ keyProperty ÊôĞÔÈÃ
-	 * Êı¾İ¿â²úÉú auto_increment ÁĞµÄÖµ£¬È»ºó½«Éú³ÉµÄÖµÉèÖÃµ½ÊäÈë²ÎÊı¶ÔÏóµÄÊôĞÔÖĞ¡£
+	 * è‡ªåŠ¨ç”Ÿæˆä¸»é”®å¯ä»¥ä½¿ç”¨ @Options æ³¨è§£çš„ userGeneratedKeys  å’Œ keyProperty å±æ€§è®©
+	 * æ•°æ®åº“äº§ç”Ÿ auto_increment åˆ—çš„å€¼ï¼Œç„¶åå°†ç”Ÿæˆçš„å€¼è®¾ç½®åˆ°è¾“å…¥å‚æ•°å¯¹è±¡çš„å±æ€§ä¸­ã€‚
 	 */
 	@Insert("insert into authors(name, email) values(#{name},#{email})")
-	// ÕâÀï id ÁĞÖµ½«»áÍ¨¹ı MySQL Êı¾İ¿â×Ô¶¯Éú³É£¬²¢ÇÒÉú³ÉµÄÖµ½«»á±»ÉèÖÃµ½ author ¶ÔÏóµÄ id ÊôĞÔÖĞ¡£
+	// è¿™é‡Œ id åˆ—å€¼å°†ä¼šé€šè¿‡ MySQL æ•°æ®åº“è‡ªåŠ¨ç”Ÿæˆï¼Œå¹¶ä¸”ç”Ÿæˆçš„å€¼å°†ä¼šè¢«è®¾ç½®åˆ° author å¯¹è±¡çš„ id å±æ€§ä¸­ã€‚
 	@Options(useGeneratedKeys = true, keyProperty = "id")
 	public int insertAuthor2(Author author);
 	
 	/**
-	 * ÓĞÒ»Ğ©Êı¾İ¿âÈç Oracle£¬²¢²»Ö§³Ö AUTO_INCREMENT ÁĞÊôĞÔ£¬ËüÊ¹ÓÃĞòÁĞ£¨SEQUENCE£©À´²úÉúÖ÷¼üµÄÖµ¡£ 
-	 * ¿ÉÒÔÊ¹ÓÃ @SelectKey ×¢½âÀ´ÎªÈÎÒâ SQL Óï¾äÀ´Ö¸¶¨ÆäÖ÷¼üÖµ¡£
+	 * æœ‰ä¸€äº›æ•°æ®åº“å¦‚ Oracleï¼Œå¹¶ä¸æ”¯æŒ AUTO_INCREMENT åˆ—å±æ€§ï¼Œå®ƒä½¿ç”¨åºåˆ—ï¼ˆSEQUENCEï¼‰æ¥äº§ç”Ÿä¸»é”®çš„å€¼ã€‚ 
+	 * å¯ä»¥ä½¿ç”¨ @SelectKey æ³¨è§£æ¥ä¸ºä»»æ„ SQL è¯­å¥æ¥æŒ‡å®šå…¶ä¸»é”®å€¼ã€‚
 	 */
 	@Insert("insert into authors(id, name, email) values(#{id}, #{name},#{email})")
-	// Ê¹ÓÃ @SelectKey À´Éú³ÉÖ÷¼üÖµ£¬²¢ÇÒ´æ´¢µ½ÁË author ¶ÔÏóµÄ id ÊôĞÔÉÏ¡£ÓÉÓÚÉèÖÃÁËbefore=true£¬¸ÃÓï¾ä½«»áÔÚ INSERT Óï¾äÖ®Ç°Ö´ĞĞ¡£
+	// ä½¿ç”¨ @SelectKey æ¥ç”Ÿæˆä¸»é”®å€¼ï¼Œå¹¶ä¸”å­˜å‚¨åˆ°äº† author å¯¹è±¡çš„ id å±æ€§ä¸Šã€‚ç”±äºè®¾ç½®äº†before=trueï¼Œè¯¥è¯­å¥å°†ä¼šåœ¨ INSERT è¯­å¥ä¹‹å‰æ‰§è¡Œã€‚
 	@SelectKey(statement = "SELECT (max(id) + 1) FROM authors", keyProperty = "id", resultType = int.class, before = true)
 	public int insertAuthor3(Author author);
 	
 	
 	/**
-	 * Ê¹ÓÃ @Update ×¢½âÀ´¶¨ÒåÒ»¸ö UPDATE Ó³ÉäÓï¾ä£¬¸Ã·½·¨½«·µ»Ø UPDATE Óï¾äÖ´ĞĞºóÓ°ÏìµÄĞĞÊı¡£
+	 * ä½¿ç”¨ @Update æ³¨è§£æ¥å®šä¹‰ä¸€ä¸ª UPDATE æ˜ å°„è¯­å¥ï¼Œè¯¥æ–¹æ³•å°†è¿”å› UPDATE è¯­å¥æ‰§è¡Œåå½±å“çš„è¡Œæ•°ã€‚
 	 */
 	@Update("update authors set name=#{name}, email=#{email} where id=#{id}")
 	public int updateAuthor(Author author);
 	
 	
 	/**
-	 * Ê¹ÓÃ @Delete ×¢½âÀ´¶¨ÒåÒ»¸ö DELETE Ó³ÉäÓï¾ä£¬¸Ã·½·¨½«·µ»Ø DELETE Óï¾äÖ´ĞĞºóÓ°ÏìµÄĞĞÊı¡£
+	 * ä½¿ç”¨ @Delete æ³¨è§£æ¥å®šä¹‰ä¸€ä¸ª DELETE æ˜ å°„è¯­å¥ï¼Œè¯¥æ–¹æ³•å°†è¿”å› DELETE è¯­å¥æ‰§è¡Œåå½±å“çš„è¡Œæ•°ã€‚
 	 */
 	@Update("delete from authors where id=#{id}")
 	public int deleteAuthor(Author author);
 	
 	
 	/**
-	 * Ê¹ÓÃ @Select ×¢½âÀ´¶¨ÒåÒ»¸ö SELECT Ó³ÉäÓï¾ä£¬¸Ã·½·¨½«·µ»Ø SELECT Óï¾äÖ´ĞĞºó²éÑ¯µ½µÄ Author ¶ÔÏó¡£
-	 * Èç¹û·µ»ØÁË¶àĞĞ½á¹û£¬½«Å×³ö TooManyResultsException Òì³£¡£
+	 * ä½¿ç”¨ @Select æ³¨è§£æ¥å®šä¹‰ä¸€ä¸ª SELECT æ˜ å°„è¯­å¥ï¼Œè¯¥æ–¹æ³•å°†è¿”å› SELECT è¯­å¥æ‰§è¡ŒåæŸ¥è¯¢åˆ°çš„ Author å¯¹è±¡ã€‚
+	 * å¦‚æœè¿”å›äº†å¤šè¡Œç»“æœï¼Œå°†æŠ›å‡º TooManyResultsException å¼‚å¸¸ã€‚
 	 */
 	@Select("select * from authors where id=#{id}")
 	public Author findAuthorById(int id);
 	
 	/**
-	 * ·½·¨ÁĞ±íÓĞ¶à¸ö²ÎÊıÊ±£¬Ê¹ÓÃ @Param ×¢½âÀ´¶¨Òå¸÷×ÔµÄ±êÊ¶
+	 * æ–¹æ³•åˆ—è¡¨æœ‰å¤šä¸ªå‚æ•°æ—¶ï¼Œä½¿ç”¨ @Param æ³¨è§£æ¥å®šä¹‰å„è‡ªçš„æ ‡è¯†
 	 */
 	@Select("select * from authors where name=#{name} and email=#{email}")
 	public Author findAuthorBy(@Param("name") String name, @Param("email") String email);

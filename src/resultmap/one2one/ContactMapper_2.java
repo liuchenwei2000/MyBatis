@@ -7,27 +7,27 @@ import resultmap.Address;
 import resultmap.Contact;
 
 /**
- * Ò»¶ÔÒ»Ó³ÉäµÄµÚ¶şÖÖÅäÖÃ·½Ê½Mapper
+ * ä¸€å¯¹ä¸€æ˜ å°„çš„ç¬¬äºŒç§é…ç½®æ–¹å¼Mapper
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ12ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ12æ—¥
  */
 public interface ContactMapper_2 {
 	
 	/**
-	 * ¸ù¾İµØÖ·Ö÷¼ü»ñÈ¡ÆäÈ«²¿ĞÅÏ¢
+	 * æ ¹æ®åœ°å€ä¸»é”®è·å–å…¶å…¨éƒ¨ä¿¡æ¯
 	 * 
 	 * @param address_id
-	 *            µØÖ·Ö÷¼ü
+	 *            åœ°å€ä¸»é”®
 	 */
 	public Address findAddressByID(int address_id);
 
 	/**
-	 * ¸ù¾İÁªÏµÈËÖ÷¼ü»ñÈ¡ÆäÈ«²¿ĞÅÏ¢
+	 * æ ¹æ®è”ç³»äººä¸»é”®è·å–å…¶å…¨éƒ¨ä¿¡æ¯
 	 * 
 	 * @param contact_id
-	 *            ÁªÏµÈËÖ÷¼ü
+	 *            è”ç³»äººä¸»é”®
 	 */
 	public Contact findContactWithAddress(int contact_id);
 }

@@ -12,11 +12,11 @@ import resultmap.Contact;
 import util.MyBatisUtil;
 
 /**
- * ´«µİ¶à¸ö²ÎÊıÑİÊ¾
+ * ä¼ é€’å¤šä¸ªå‚æ•°æ¼”ç¤º
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ11ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ11æ—¥
  */
 public class ContactCRUD {
 	
@@ -31,14 +31,14 @@ public class ContactCRUD {
 	}
 	
 	/**
-	 * Í¨¹ıÊ¹ÓÃ map µÄ·½Ê½´«Èë¶à¸ö²ÎÊı
+	 * é€šè¿‡ä½¿ç”¨ map çš„æ–¹å¼ä¼ å…¥å¤šä¸ªå‚æ•°
 	 */
 	private static void selectContactByConditionUseMap() {
 		SqlSession sqlSession = MyBatisUtil.openSession();
 		try {
 			
 			Map<String, String> params = new HashMap<String, String>();
-			params.put("Name", "ÕÅÈı");// Map µÄ key ĞèÒªºÍ Mapper ÎÄ¼şÖĞµÄ²ÎÊı±£³ÖÒ»ÖÂ£¨ #{Name}£©
+			params.put("Name", "å¼ ä¸‰");// Map çš„ key éœ€è¦å’Œ Mapper æ–‡ä»¶ä¸­çš„å‚æ•°ä¿æŒä¸€è‡´ï¼ˆ #{Name}ï¼‰
 			params.put("Email", "zhangsan@163.com");
 			
 			Contact contact = sqlSession.selectOne(
@@ -50,13 +50,13 @@ public class ContactCRUD {
 	}
 	
 	/**
-	 * Í¨¹ıÊ¹ÓÃ #{param} µÄ·½Ê½´«Èë¶à¸ö²ÎÊı
+	 * é€šè¿‡ä½¿ç”¨ #{param} çš„æ–¹å¼ä¼ å…¥å¤šä¸ªå‚æ•°
 	 */
 	private static void selectContactByConditionUseParam() {
 		SqlSession sqlSession = MyBatisUtil.openSession();
 		try {
 			ContactMapper mapper = sqlSession.getMapper(ContactMapper.class);
-			Contact contact = mapper.findContactByCondition("ÕÅÈı", "zhangsan@163.com");
+			Contact contact = mapper.findContactByCondition("å¼ ä¸‰", "zhangsan@163.com");
 			System.out.println("Contact=" + contact);
 		} finally {
 			sqlSession.close();

@@ -4,11 +4,11 @@
 package resultmap.one2many;
 
 /**
- * ¿Î³Ì
+ * è¯¾ç¨‹
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ12ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ12æ—¥
  */
 public class Course {
 

@@ -8,11 +8,11 @@ import org.apache.ibatis.session.SqlSession;
 import util.MyBatisUtil;
 
 /**
- * Ê¹ÓÃÁ½ÖÖ²»Í¬µÄÒ»¶Ô¶àÓ³ÉäÅäÖÃ½øĞĞ²éÑ¯Ê¾Àı
+ * ä½¿ç”¨ä¸¤ç§ä¸åŒçš„ä¸€å¯¹å¤šæ˜ å°„é…ç½®è¿›è¡ŒæŸ¥è¯¢ç¤ºä¾‹
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ12ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ12æ—¥
  */
 public class TeacherCRUD {
 

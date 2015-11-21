@@ -8,11 +8,11 @@ import org.apache.ibatis.session.SqlSession;
 import util.MyBatisUtil;
 
 /**
- * ³Ö¾Ã»¯ enum ÀàĞÍµÄ×Ö¶Î 
+ * æŒä¹…åŒ– enum ç±»å‹çš„å­—æ®µ 
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ12ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ12æ—¥
  */
 public class DoctorCRUD {
 

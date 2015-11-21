@@ -8,14 +8,14 @@ import resultmap.Contact;
 /**
  * ContactMapper
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ13ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ13æ—¥
  */
 public interface ContactMapper {
 
 	/**
-	 * Í¨¹ı name ºÍ email ²éÕÒÆ¥ÅäµÄ Contact
+	 * é€šè¿‡ name å’Œ email æŸ¥æ‰¾åŒ¹é…çš„ Contact
 	 */
 	public Contact findContactByCondition(String name, String email);
 }

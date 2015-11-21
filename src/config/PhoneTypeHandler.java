@@ -12,19 +12,19 @@ import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 
 /**
- * PhoneNumberÀàĞÍ´¦ÀíÆ÷
+ * PhoneNumberç±»å‹å¤„ç†å™¨
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ10ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ10æ—¥
  */
-// MyBatis Ìá¹©ÁË³éÏóÀà BaseTypeHandler<T> £¬¿ÉÒÔ¼Ì³Ğ´ËÀà´´½¨×Ô¶¨ÒåÀàĞÍ´¦ÀíÆ÷¡£
+// MyBatis æä¾›äº†æŠ½è±¡ç±» BaseTypeHandler<T> ï¼Œå¯ä»¥ç»§æ‰¿æ­¤ç±»åˆ›å»ºè‡ªå®šä¹‰ç±»å‹å¤„ç†å™¨ã€‚
 public class PhoneTypeHandler extends BaseTypeHandler<PhoneNumber> {
 
 	@Override
 	public void setNonNullParameter(PreparedStatement ps, int i,
 			PhoneNumber parameter, JdbcType jdbcType) throws SQLException {
-		// Ê¹ÓÃ ps.setString()ºÍ rs.getString()·½·¨ÊÇÒòÎª phone ÁĞÊÇ VARCHAR ÀàĞÍ¡£
+		// ä½¿ç”¨ ps.setString()å’Œ rs.getString()æ–¹æ³•æ˜¯å› ä¸º phone åˆ—æ˜¯ VARCHAR ç±»å‹ã€‚
 		ps.setString(i, parameter.getAsString());
 	}
 

@@ -8,16 +8,16 @@ import java.util.List;
 import org.apache.ibatis.annotations.Select;
 
 /**
- * »ùÓÚ×¢½âµÄ Award SQL Óï¾äÓ³Éä
+ * åŸºäºæ³¨è§£çš„ Award SQL è¯­å¥æ˜ å°„
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê3ÔÂ12ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´3æœˆ12æ—¥
  */
 public interface AwardMapper {
 
 	/**
-	 * ¸ù¾İ Book id ²éÑ¯ÆäËùÓĞµÄ Award
+	 * æ ¹æ® Book id æŸ¥è¯¢å…¶æ‰€æœ‰çš„ Award
 	 */
 	@Select("select * from awards where book_id=#{book_id}")
 	public List<Award> findAwardsByBookId(int book_id);

@@ -6,13 +6,13 @@ package quickstart;
 import java.util.List;
 
 /**
- * Ê¾Àı
+ * ç¤ºä¾‹
  * <p>
- * Ó³ÉäÆ÷ Mapper ½Ó¿Ú£¬Æä¶¨ÒåµÄ·½·¨Ç©ÃûºÍÔÚ StudentMapper.xml ÖĞ¶¨ÒåµÄ id µÄÖµÏàÍ¬¡£
+ * æ˜ å°„å™¨ Mapper æ¥å£ï¼Œå…¶å®šä¹‰çš„æ–¹æ³•ç­¾åå’Œåœ¨ StudentMapper.xml ä¸­å®šä¹‰çš„ id çš„å€¼ç›¸åŒã€‚
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ9ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ9æ—¥
  */
 public interface StudentMapper {
 

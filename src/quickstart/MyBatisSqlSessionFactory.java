@@ -12,22 +12,22 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 /**
- * SqlSessionFactory¹¤³§
+ * SqlSessionFactoryå·¥å‚
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ9ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ9æ—¥
  */
 public class MyBatisSqlSessionFactory {
 	
-	// Ã¿¸öÊı¾İ¿â»·¾³Ó¦¸ÃÓĞÇÒÖ»ÓĞÒ»¸ö SqlSessionFactory ÊµÀı£¬ËùÒÔ²ÉÓÃµ¥ÀıÄ£Ê½¡£
+	// æ¯ä¸ªæ•°æ®åº“ç¯å¢ƒåº”è¯¥æœ‰ä¸”åªæœ‰ä¸€ä¸ª SqlSessionFactory å®ä¾‹ï¼Œæ‰€ä»¥é‡‡ç”¨å•ä¾‹æ¨¡å¼ã€‚
 	private static SqlSessionFactory sqlSessionFactory;
 
 	public static SqlSessionFactory getSqlSessionFactory() {
 		if (sqlSessionFactory == null) {
 			InputStream inputStream = null;
 			try {
-				// Ê¹ÓÃ mybatis-config.xml ÄÚµÄĞÅÏ¢´´½¨ SqlSessionFactory ¶ÔÏó
+				// ä½¿ç”¨ mybatis-config.xml å†…çš„ä¿¡æ¯åˆ›å»º SqlSessionFactory å¯¹è±¡
 				inputStream = Resources.getResourceAsStream("quickstart/mybatis-config.xml");
 				sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 			} catch (IOException e) {
@@ -38,8 +38,8 @@ public class MyBatisSqlSessionFactory {
 	}
 
 	/**
-	 * Ã¿Ò»¸öÏß³ÌÓ¦¸ÃÓĞËü×Ô¼ºµÄ SqlSession ÊµÀı¡£
-	 * SqlSession ¶ÔÏóÊµÀı²»ÊÇÏß³Ì°²È«µÄ£¬²¢ÇÒ²»ÄÜ±»¹²Ïí¡£
+	 * æ¯ä¸€ä¸ªçº¿ç¨‹åº”è¯¥æœ‰å®ƒè‡ªå·±çš„ SqlSession å®ä¾‹ã€‚
+	 * SqlSession å¯¹è±¡å®ä¾‹ä¸æ˜¯çº¿ç¨‹å®‰å…¨çš„ï¼Œå¹¶ä¸”ä¸èƒ½è¢«å…±äº«ã€‚
 	 */
 	public static SqlSession openSession() {
 		return getSqlSessionFactory().openSession();

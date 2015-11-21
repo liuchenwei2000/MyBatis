@@ -8,25 +8,25 @@ import org.apache.ibatis.session.SqlSession;
 import util.MyBatisUtil;
 
 /**
- * µ÷ÓÃÓ³ÉäµÄSQLÓï¾äÊ¾Àı
+ * è°ƒç”¨æ˜ å°„çš„SQLè¯­å¥ç¤ºä¾‹
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ11ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ11æ—¥
  */
 public class StudentCRUD {
 
 	/**
-	 * Í¨¹ı×Ö·û´®µÄĞÎÊ½µ÷ÓÃÓ³ÉäµÄSQLÓï¾ä£¬ÕâÖÖ·½Ê½ÈİÒ×³ö´í£¬²»ÔÙÍÆ¼öÊ¹ÓÃ¡£
+	 * é€šè¿‡å­—ç¬¦ä¸²çš„å½¢å¼è°ƒç”¨æ˜ å°„çš„SQLè¯­å¥ï¼Œè¿™ç§æ–¹å¼å®¹æ˜“å‡ºé”™ï¼Œä¸å†æ¨èä½¿ç”¨ã€‚
 	 */
 	public static void crudByString(Integer studId) {
 		SqlSession sqlSession = MyBatisUtil.openSession();
 		try {
-			// ×Ö·û´®Îª mapperÎÄ¼şµÄ namespace + SQLÓï¾ä id
-			Student student = sqlSession.selectOne("mapper.StudentMapper.findStudentById", studId);// Ö´ĞĞSELECTÓï¾ä
-			int count = sqlSession.insert("mapper.StudentMapper.insertStudent", student);// Ö´ĞĞINSERTÓï¾ä£¬·µ»ØÓ°ÏìµÄĞĞÊı
-			count = sqlSession.update("mapper.StudentMapper.updateStudent", student);// Ö´ĞĞUPDATEÓï¾ä£¬·µ»ØÓ°ÏìµÄĞĞÊı
-			count = sqlSession.delete("mapper.StudentMapper.deleteStudent", student.getStudId());// Ö´ĞĞDELETEÓï¾ä£¬·µ»ØÓ°ÏìµÄĞĞÊı
+			// å­—ç¬¦ä¸²ä¸º mapperæ–‡ä»¶çš„ namespace + SQLè¯­å¥ id
+			Student student = sqlSession.selectOne("mapper.StudentMapper.findStudentById", studId);// æ‰§è¡ŒSELECTè¯­å¥
+			int count = sqlSession.insert("mapper.StudentMapper.insertStudent", student);// æ‰§è¡ŒINSERTè¯­å¥ï¼Œè¿”å›å½±å“çš„è¡Œæ•°
+			count = sqlSession.update("mapper.StudentMapper.updateStudent", student);// æ‰§è¡ŒUPDATEè¯­å¥ï¼Œè¿”å›å½±å“çš„è¡Œæ•°
+			count = sqlSession.delete("mapper.StudentMapper.deleteStudent", student.getStudId());// æ‰§è¡ŒDELETEè¯­å¥ï¼Œè¿”å›å½±å“çš„è¡Œæ•°
 			System.out.println(count);
 		} finally {
 			sqlSession.close();
@@ -34,7 +34,7 @@ public class StudentCRUD {
 	}
 	
 	/**
-	 * Í¨¹ıÓ³ÉäÆ÷½Ó¿Ú¿ÉÒÔÒÔÀàĞÍ°²È«µÄĞÎÊ½µ÷ÓÃµ÷ÓÃÓ³ÉäÓï¾ä¡£
+	 * é€šè¿‡æ˜ å°„å™¨æ¥å£å¯ä»¥ä»¥ç±»å‹å®‰å…¨çš„å½¢å¼è°ƒç”¨è°ƒç”¨æ˜ å°„è¯­å¥ã€‚
 	 */
 	public static void crudByMapperInterface(Integer studId) {
 		SqlSession sqlSession = MyBatisUtil.openSession();

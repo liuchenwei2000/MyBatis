@@ -6,14 +6,14 @@ package more.enums;
 /**
  * DoctorMapper
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ13ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ13æ—¥
  */
 public interface DoctorMapper {
 
 	/**
-	 * ĞÂÔöÒ»¸öDoctor
+	 * æ–°å¢ä¸€ä¸ªDoctor
 	 */
 	public void insertDoctor(Doctor doctor);
 }

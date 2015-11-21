@@ -10,9 +10,9 @@ import org.apache.ibatis.session.SqlSession;
 /**
  * Student DAO
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ9ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ9æ—¥
  */
 public class StudentDAO {
 

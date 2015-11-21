@@ -10,11 +10,11 @@ import resultmap.Contact;
 import util.MyBatisUtil;
 
 /**
- * ʹ�����ֲ�ͬ��һ��һӳ�����ý��в�ѯʾ��
+ * 使用三种不同的一对一映射配置进行查询示例
  * 
- * @author ����ΰ
+ * @author 刘晨伟
  * 
- * �������ڣ�2015��2��12��
+ * 创建日期：2015年2月12日
  */
 public class ContactCRUD {
 

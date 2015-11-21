@@ -15,43 +15,43 @@ import org.apache.ibatis.annotations.Select;
 import annotation.Book;
 
 /**
- * ½á¹û¼¯Ó³ÉäÊ¾Àı
+ * ç»“æœé›†æ˜ å°„ç¤ºä¾‹
  * <p>
- * ¿ÉÒÔ½«²éÑ¯½á¹ûÍ¨¹ı±ğÃû»òÕßÊÇ @Results ×¢½âÓë JavaBean ÊôĞÔÓ³ÉäÆğÀ´¡£
+ * å¯ä»¥å°†æŸ¥è¯¢ç»“æœé€šè¿‡åˆ«åæˆ–è€…æ˜¯ @Results æ³¨è§£ä¸ JavaBean å±æ€§æ˜ å°„èµ·æ¥ã€‚
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê3ÔÂ12ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´3æœˆ12æ—¥
  */
 public interface BookMapper {
 	
 	/**
-	 * Ê¹ÓÃ±ğÃû½øĞĞ½á¹û¼¯Ó³Éä
+	 * ä½¿ç”¨åˆ«åè¿›è¡Œç»“æœé›†æ˜ å°„
 	 */
 	@Select("select id, name as title, isbn from books")
 	public List<Book> findAllBooksUsingAlias();
 
 	/**
-	 * Ê¹ÓÃ @Results ×¢½â½øĞĞ½á¹û¼¯Ó³Éä
+	 * ä½¿ç”¨ @Results æ³¨è§£è¿›è¡Œç»“æœé›†æ˜ å°„
 	 */
 	@Select("select * from books")
 	@Results({
 			@Result(id = true, column = "id", property = "id"),
 			@Result(column = "name", property = "title"),
 			@Result(column = "isbn", property = "isbn"),
-			// @One ×¢½â¿ÉÒÔÊ¹ÓÃÇ¶Ì× select Óï¾ä¼ÓÔØÒ»¶ÔÒ»¹ØÁªÊı¾İ¡£select ÊôĞÔÖ¸¶¨Ò»¸öÍêÈ«ÏŞ¶¨ÃûµÄ·½·¨£¬¸Ã·½·¨»á·µ»ØÒ»¸ö Author ¶ÔÏó¡£
-			// Ê¹ÓÃ column=¡±author_id¡±£¬Ôò Books ±íÖĞÁĞ author_id µÄÖµ½«»á×÷Îª²ÎÊı´«Èë findAddressById()·½·¨¡£ 
-			// Èç¹û@One select ²éÑ¯·µ»ØÁË¶àĞĞ½á¹û£¬Ôò»áÅ×³ö TooManyResultsException ¡£
+			// @One æ³¨è§£å¯ä»¥ä½¿ç”¨åµŒå¥— select è¯­å¥åŠ è½½ä¸€å¯¹ä¸€å…³è”æ•°æ®ã€‚select å±æ€§æŒ‡å®šä¸€ä¸ªå®Œå…¨é™å®šåçš„æ–¹æ³•ï¼Œè¯¥æ–¹æ³•ä¼šè¿”å›ä¸€ä¸ª Author å¯¹è±¡ã€‚
+			// ä½¿ç”¨ column=â€author_idâ€ï¼Œåˆ™ Books è¡¨ä¸­åˆ— author_id çš„å€¼å°†ä¼šä½œä¸ºå‚æ•°ä¼ å…¥ findAddressById()æ–¹æ³•ã€‚ 
+			// å¦‚æœ@One select æŸ¥è¯¢è¿”å›äº†å¤šè¡Œç»“æœï¼Œåˆ™ä¼šæŠ›å‡º TooManyResultsException ã€‚
 			@Result(column = "author_id", property = "author", one = @One(select = "annotation.crud.AuthorMapper.findAuthorById")),
-			// @Many ×¢½â¿ÉÒÔÓÃÀ´Ê¹ÓÃÇ¶Ì× select Óï¾ä¼ÓÔØÒ»¶Ô¶à¹ØÁªÊı¾İ¡£select ÊôĞÔÀ´Ö¸¶¨Ò»¸öÍêÈ«ÏŞ¶¨Ãû³ÆµÄ·½·¨£¬¸Ã·½·¨½«·µ»ØÒ»¸ö List<Award>¡£
-			// Ê¹ÓÃ column=¡±id¡±£¬Ôò Books ±íÖĞµÄ id µÄÖµ½«»á×÷Îª²ÎÊı´«Èç findAwardsByBookId()·½·¨¡£
+			// @Many æ³¨è§£å¯ä»¥ç”¨æ¥ä½¿ç”¨åµŒå¥— select è¯­å¥åŠ è½½ä¸€å¯¹å¤šå…³è”æ•°æ®ã€‚select å±æ€§æ¥æŒ‡å®šä¸€ä¸ªå®Œå…¨é™å®šåç§°çš„æ–¹æ³•ï¼Œè¯¥æ–¹æ³•å°†è¿”å›ä¸€ä¸ª List<Award>ã€‚
+			// ä½¿ç”¨ column=â€idâ€ï¼Œåˆ™ Books è¡¨ä¸­çš„ id çš„å€¼å°†ä¼šä½œä¸ºå‚æ•°ä¼ å¦‚ findAwardsByBookId()æ–¹æ³•ã€‚
 			@Result(column = "id", property = "awards", many = @Many(select = "annotation.AwardMapper.findAwardsByBookId")) })
 	public List<Book> findAllBooksUsingResults();
 	
 	/**
-	 * @Results ×¢½âºÍÓ³ÉäÆ÷ XML ÅäÖÃÎÄ¼şÔªËØ <resultMap> Ïà¶ÔÓ¦£¬µ«Ëü²»ÄÜÎª @Results ×¢½â¸³ÓèÒ»¸ö ID¡£
-	 * ËùÒÔËü²»Ïñ <resultMap> ÔªËØÄÇÑùÄÜ¹»±»ÖØÓÃ£¬ÕâÒâÎ¶×Å¼´Ê¹ @Results ×¢½âÍêÈ«ÏàÍ¬£¬Ò²ĞèÒªÖØ¸´ @Results µÄÉùÃ÷¡£
-	 * ¿ÉÒÔ´´½¨Ò»¸ö Mapper XMLÅäÖÃÎÄ¼ş£¬ ÆäÖĞÅäÖÃ <resultMap> ÔªËØ£¬ÔÙÊ¹ÓÃ @ResultMap ×¢½âÒıÓÃ´Ë <resultMap> ¡£
+	 * @Results æ³¨è§£å’Œæ˜ å°„å™¨ XML é…ç½®æ–‡ä»¶å…ƒç´  <resultMap> ç›¸å¯¹åº”ï¼Œä½†å®ƒä¸èƒ½ä¸º @Results æ³¨è§£èµ‹äºˆä¸€ä¸ª IDã€‚
+	 * æ‰€ä»¥å®ƒä¸åƒ <resultMap> å…ƒç´ é‚£æ ·èƒ½å¤Ÿè¢«é‡ç”¨ï¼Œè¿™æ„å‘³ç€å³ä½¿ @Results æ³¨è§£å®Œå…¨ç›¸åŒï¼Œä¹Ÿéœ€è¦é‡å¤ @Results çš„å£°æ˜ã€‚
+	 * å¯ä»¥åˆ›å»ºä¸€ä¸ª Mapper XMLé…ç½®æ–‡ä»¶ï¼Œ å…¶ä¸­é…ç½® <resultMap> å…ƒç´ ï¼Œå†ä½¿ç”¨ @ResultMap æ³¨è§£å¼•ç”¨æ­¤ <resultMap> ã€‚
 	 */
 	@Select("SELECT * FROM STUDENTS WHERE ID=#{id}")
 	@ResultMap("annotation.resultmap.ResultMapper.BookResult")

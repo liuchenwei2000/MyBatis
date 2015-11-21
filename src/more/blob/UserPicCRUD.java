@@ -15,11 +15,11 @@ import org.apache.ibatis.session.SqlSession;
 import util.MyBatisUtil;
 
 /**
- * ³Ö¾Ã»¯ Blob/Clob ÀàĞÍµÄ×Ö¶Î
+ * æŒä¹…åŒ– Blob/Clob ç±»å‹çš„å­—æ®µ
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ12ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ12æ—¥
  */
 public class UserPicCRUD {
 
@@ -36,10 +36,10 @@ public class UserPicCRUD {
 	}
 	
 	/**
-	 * ÈçºÎ½«Êı¾İ²åÈëµ½ CLOB/BLOB ÀàĞÍµÄÁĞÉÏ
+	 * å¦‚ä½•å°†æ•°æ®æ’å…¥åˆ° CLOB/BLOB ç±»å‹çš„åˆ—ä¸Š
 	 */
 	private static void insertUserPic() throws IOException {
-		// ¶ÁÈ¡¶ş½øÖÆÎÄ¼şĞÎ³É byte[]
+		// è¯»å–äºŒè¿›åˆ¶æ–‡ä»¶å½¢æˆ byte[]
 		InputStream is = null;
 		byte[] pic = null;
 		try {
@@ -68,7 +68,7 @@ public class UserPicCRUD {
 	}
 	
 	/**
-	 * ½« CLOB ÀàĞÍÊı¾İ¶ÁÈ¡µ½ String ÀàĞÍ£¬BLOB ÀàĞÍÊı¾İ¶ÁÈ¡³É byte[]ÊôĞÔ¡£
+	 * å°† CLOB ç±»å‹æ•°æ®è¯»å–åˆ° String ç±»å‹ï¼ŒBLOB ç±»å‹æ•°æ®è¯»å–æˆ byte[]å±æ€§ã€‚
 	 */
 	private static void getUserPic() throws IOException {
 		UserPic userPic = null;

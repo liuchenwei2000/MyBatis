@@ -4,16 +4,16 @@
 package resultmap.one2many;
 
 /**
- * Ò»¶Ô¶àÓ³ÉäµÄµÚÒ»ÖÖÅäÖÃ·½Ê½Mapper
+ * ä¸€å¯¹å¤šæ˜ å°„çš„ç¬¬ä¸€ç§é…ç½®æ–¹å¼Mapper
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ13ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ13æ—¥
  */
 public interface TeacherMapper_1 {
 	
 	/**
-	 * ¸ù¾İ½ÌÊ¦Ö÷¼ü»ñÈ¡ÆäÈ«²¿ĞÅÏ¢
+	 * æ ¹æ®æ•™å¸ˆä¸»é”®è·å–å…¶å…¨éƒ¨ä¿¡æ¯
 	 */
 	public Teacher findTeacherById(int teacher_id);
 }

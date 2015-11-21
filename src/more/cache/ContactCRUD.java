@@ -12,14 +12,14 @@ import resultmap.Contact;
 import util.MyBatisUtil;
 
 /**
- * Ò»¼¶»º´æÊ¾Àı
+ * ä¸€çº§ç¼“å­˜ç¤ºä¾‹
  * <p>
- * MyBatis ¶ÔÓ³ÉäµÄ SELECT Óï¾ä¼ÓÔØµÄ²éÑ¯½á¹ûÌá¹©ÁËÄÚ½¨µÄ»º´æÖ§³Ö¡£Ä¬ÈÏÇé¿öÏÂ£¬ÆôÓÃÒ»¼¶»º´æ£¬
- * ¼´Èç¹ûÊ¹ÓÃÍ¬Ò»¸ö SqlSession ¶ÔÏóµ÷ÓÃÁËÏàÍ¬µÄ SELECT Óï¾ä£¬ÔòµÚ¶ş´Î»áÖ±½Ó´Ó»º´æÖĞ»ñÈ¡½á¹û£¬¶ø²»ÔÙ²éÑ¯Êı¾İ¿â¡£
+ * MyBatis å¯¹æ˜ å°„çš„ SELECT è¯­å¥åŠ è½½çš„æŸ¥è¯¢ç»“æœæä¾›äº†å†…å»ºçš„ç¼“å­˜æ”¯æŒã€‚é»˜è®¤æƒ…å†µä¸‹ï¼Œå¯ç”¨ä¸€çº§ç¼“å­˜ï¼Œ
+ * å³å¦‚æœä½¿ç”¨åŒä¸€ä¸ª SqlSession å¯¹è±¡è°ƒç”¨äº†ç›¸åŒçš„ SELECT è¯­å¥ï¼Œåˆ™ç¬¬äºŒæ¬¡ä¼šç›´æ¥ä»ç¼“å­˜ä¸­è·å–ç»“æœï¼Œè€Œä¸å†æŸ¥è¯¢æ•°æ®åº“ã€‚
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê3ÔÂ9ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´3æœˆ9æ—¥
  */
 public class ContactCRUD {
 	
@@ -32,20 +32,20 @@ public class ContactCRUD {
 	}
 	
 	/**
-	 * ÑİÊ¾Ò»¼¶»º´æ£¬¿É¼ûÁ½´Î²éÑ¯µÄ½á¹ûÊÇÒ»ÖÂµÄ£¬¼´µÚ¶ş´ÎÖ±½Ó´Ó»º´æÖĞ»ñÈ¡½á¹û¡£
+	 * æ¼”ç¤ºä¸€çº§ç¼“å­˜ï¼Œå¯è§ä¸¤æ¬¡æŸ¥è¯¢çš„ç»“æœæ˜¯ä¸€è‡´çš„ï¼Œå³ç¬¬äºŒæ¬¡ç›´æ¥ä»ç¼“å­˜ä¸­è·å–ç»“æœã€‚
 	 */
 	private static void selectAllContacts() {
 		SqlSession sqlSession = MyBatisUtil.openSession();
 		try {
 			ContactMapper mapper = sqlSession.getMapper(ContactMapper.class);
-			// µÚÒ»´Î SELECT SQL µÄ²éÑ¯½á¹û
+			// ç¬¬ä¸€æ¬¡ SELECT SQL çš„æŸ¥è¯¢ç»“æœ
 			List<Contact> result = mapper.findAllContacts();
 			System.out.println("result.size() = " + result.size());
 			
-			// ĞİÃß10Ãë£¬ÔÚÊı¾İ¿âÖĞÊÖ¶¯É¾³ı»òÔö¼ÓÒ»Ìõ¼ÇÂ¼
+			// ä¼‘çœ 10ç§’ï¼Œåœ¨æ•°æ®åº“ä¸­æ‰‹åŠ¨åˆ é™¤æˆ–å¢åŠ ä¸€æ¡è®°å½•
 			TimeUnit.SECONDS.sleep(10);
 			
-			// µÚÒ»´Î SELECT SQL µÄ²éÑ¯½á¹û
+			// ç¬¬ä¸€æ¬¡ SELECT SQL çš„æŸ¥è¯¢ç»“æœ
 			result = mapper.findAllContacts();
 			System.out.println("result.size() = " + result.size());
 		} catch (InterruptedException e) {

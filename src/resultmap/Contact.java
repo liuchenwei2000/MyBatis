@@ -4,18 +4,18 @@
 package resultmap;
 
 /**
- * ÁªÏµÈË
+ * è”ç³»äºº
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ12ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ12æ—¥
  */
 public class Contact {
 	
 	private Integer id;
 	private String name;
 	private String email;
-	// Ã¿Ò»¸ö Contact ¶¼ÓĞÒ»¸ö¹ØÁªµÄ Address£¬¼´ contacts±íÓĞÒ»¸ö address µÄÍâ¼ü
+	// æ¯ä¸€ä¸ª Contact éƒ½æœ‰ä¸€ä¸ªå…³è”çš„ Addressï¼Œå³ contactsè¡¨æœ‰ä¸€ä¸ª address çš„å¤–é”®
 	private Address address;
 
 	public Integer getId() {

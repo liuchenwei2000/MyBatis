@@ -1,45 +1,45 @@
 
-MyBatis ÔÚÆäÄÚ²¿Ê¹ÓÃ JDBC£¬Ìá¹©ÁË¸ü¼ò½àµÄ·½Ê½ÊµÏÖÁËÊı¾İ¿â²Ù×÷¡£
+MyBatis åœ¨å…¶å†…éƒ¨ä½¿ç”¨ JDBCï¼Œæä¾›äº†æ›´ç®€æ´çš„æ–¹å¼å®ç°äº†æ•°æ®åº“æ“ä½œã€‚
 
-µ± MyBatis ½«Ò»¸ö Java ¶ÔÏó×÷ÎªÊäÈë²ÎÊıÖ´ĞĞ INSERT Óï¾ä²Ù×÷Ê±£¬Ëü»á´´½¨Ò»¸ö PreparedStatement ¶ÔÏó£¬²¢ÇÒÊ¹ÓÃ setXXX()·½Ê½¶ÔÕ¼Î»·ûÉèÖÃÏàÓ¦µÄ²ÎÊıÖµ¡£
-ÕâÀïµÄ XXX ¿ÉÒÔÊÇ Int£¬String£¬Date µÈ Java ¶ÔÏóÀàĞÍµÄÈÎÒâÒ»¸ö¡£
+å½“ MyBatis å°†ä¸€ä¸ª Java å¯¹è±¡ä½œä¸ºè¾“å…¥å‚æ•°æ‰§è¡Œ INSERT è¯­å¥æ“ä½œæ—¶ï¼Œå®ƒä¼šåˆ›å»ºä¸€ä¸ª PreparedStatement å¯¹è±¡ï¼Œå¹¶ä¸”ä½¿ç”¨ setXXX()æ–¹å¼å¯¹å ä½ç¬¦è®¾ç½®ç›¸åº”çš„å‚æ•°å€¼ã€‚
+è¿™é‡Œçš„ XXX å¯ä»¥æ˜¯ Intï¼ŒStringï¼ŒDate ç­‰ Java å¯¹è±¡ç±»å‹çš„ä»»æ„ä¸€ä¸ªã€‚
 
-±ÈÈç£º
+æ¯”å¦‚ï¼š
 <insert id="insertStudent" parameterType="Student">
 INSERT INTO STUDENTS(STUD_ID,NAME,EMAIL,DOB)
 VALUES(#{studId},#{name},#{email},#{dob})
 </insert>
 
-ÎªÖ´ĞĞÕâ¸öÓï¾ä£¬MyBatis ½«²ÉÈ¡ÒÔÏÂÒ»ÏµÁĞ¶¯×÷£º
-1£¬´´½¨Ò»¸öÓĞÕ¼Î»·ûµÄ PreparedStatement ½Ó¿Ú£¬ÈçÏÂ£º
+ä¸ºæ‰§è¡Œè¿™ä¸ªè¯­å¥ï¼ŒMyBatis å°†é‡‡å–ä»¥ä¸‹ä¸€ç³»åˆ—åŠ¨ä½œï¼š
+1ï¼Œåˆ›å»ºä¸€ä¸ªæœ‰å ä½ç¬¦çš„ PreparedStatement æ¥å£ï¼Œå¦‚ä¸‹ï¼š
 PreparedStatement pstmt = connection.prepareStatement("INSERT INTO STUDENTS(STUD_ID,NAME,EMAIL,DOB) VALUES(?,?,?,?)");
 
-2£¬¼ì²é Student ¶ÔÏóµÄÊôĞÔ studId µÄÀàĞÍ£¬È»ºóÊ¹ÓÃºÏÊÊ setXXX ·½·¨È¥ÉèÖÃ²ÎÊıÖµ¡£ÕâÀï studId ÊÇ integerÀàĞÍ£¬ËùÒÔ»áÊ¹ÓÃ setInt()·½·¨£º
+2ï¼Œæ£€æŸ¥ Student å¯¹è±¡çš„å±æ€§ studId çš„ç±»å‹ï¼Œç„¶åä½¿ç”¨åˆé€‚ setXXX æ–¹æ³•å»è®¾ç½®å‚æ•°å€¼ã€‚è¿™é‡Œ studId æ˜¯ integerç±»å‹ï¼Œæ‰€ä»¥ä¼šä½¿ç”¨ setInt()æ–¹æ³•ï¼š
 pstmt.setInt(1,student.getStudId());
 
-3£¬ÀàËÆµØ£¬¶ÔÓÚ name ºÍ email ÊôĞÔ¶¼ÊÇ String ÀàĞÍ£¬MyBatis Ê¹ÓÃ setString()·½·¨ÉèÖÃ²ÎÊı¡£
+3ï¼Œç±»ä¼¼åœ°ï¼Œå¯¹äº name å’Œ email å±æ€§éƒ½æ˜¯ String ç±»å‹ï¼ŒMyBatis ä½¿ç”¨ setString()æ–¹æ³•è®¾ç½®å‚æ•°ã€‚
 pstmt.setString(2, student.getName());
 pstmt.setString(3, student.getEmail());
 
-4£¬ÖÁÓÚ dob ÊôĞÔ, MyBatis »áÊ¹ÓÃ setDate() ·½·¨ÉèÖµ¡£MyBaits »á½« java.util.Date ÀàĞÍ×ª»»Îª into java.sql.Timestamp ²¢ÉèÖµ£º
+4ï¼Œè‡³äº dob å±æ€§, MyBatis ä¼šä½¿ç”¨ setDate() æ–¹æ³•è®¾å€¼ã€‚MyBaits ä¼šå°† java.util.Date ç±»å‹è½¬æ¢ä¸º into java.sql.Timestamp å¹¶è®¾å€¼ï¼š
 pstmt.setTimestamp(4, new Timestamp((student.getDob()).getTime()));
 
 
-MyBatis ÊÇÔõÃ´ÖªµÀ¶ÔÓÚ Integer ÀàĞÍÊôĞÔÊ¹ÓÃ setInt() ºÍ String ÀàĞÍÊôĞÔÊ¹ÓÃ setString()·½·¨ÄØ£¿
-ÆäÊµ MyBatis ÊÇÍ¨¹ıÊ¹ÓÃÀàĞÍ´¦ÀíÆ÷£¨type handlers£©À´¾ö¶¨ÕâÃ´×öµÄ¡£
+MyBatis æ˜¯æ€ä¹ˆçŸ¥é“å¯¹äº Integer ç±»å‹å±æ€§ä½¿ç”¨ setInt() å’Œ String ç±»å‹å±æ€§ä½¿ç”¨ setString()æ–¹æ³•å‘¢ï¼Ÿ
+å…¶å® MyBatis æ˜¯é€šè¿‡ä½¿ç”¨ç±»å‹å¤„ç†å™¨ï¼ˆtype handlersï¼‰æ¥å†³å®šè¿™ä¹ˆåšçš„ã€‚
 
 
-MyBatis ¶ÔÓÚÒÔÏÂµÄÀàĞÍÊ¹ÓÃÄÚ½¨µÄÀàĞÍ´¦ÀíÆ÷£º
-ËùÓĞµÄ»ù±¾Êı¾İÀàĞÍ¡¢»ù±¾ÀàĞÍµÄ°ü¹üÀàĞÍ¡¢byte[] ¡¢java.util.Date¡¢java.sql.Date¡¢java,sql.Time¡¢java.sql.Timestamp¡¢java Ã¶¾ÙÀàĞÍµÈ¡£
-ËùÒÔµ± MyBatis ·¢ÏÖÉÏÊöÀàĞÍµÄÊôĞÔÊ±£¬¾Í»áÊ¹ÓÃ¶ÔÓ¦µÄÀàĞÍ´¦ÀíÆ÷½«ÖµÉèÖÃµ½ PreparedStatement ÖĞ£»Í¬ÑùµÄ£¬µ±´Ó SQL ½á¹û¼¯¹¹½¨ JavaBean Ê±£¬Ò²ÓĞÀàËÆµÄ¹ı³Ì¡£
+MyBatis å¯¹äºä»¥ä¸‹çš„ç±»å‹ä½¿ç”¨å†…å»ºçš„ç±»å‹å¤„ç†å™¨ï¼š
+æ‰€æœ‰çš„åŸºæœ¬æ•°æ®ç±»å‹ã€åŸºæœ¬ç±»å‹çš„åŒ…è£¹ç±»å‹ã€byte[] ã€java.util.Dateã€java.sql.Dateã€java,sql.Timeã€java.sql.Timestampã€java æšä¸¾ç±»å‹ç­‰ã€‚
+æ‰€ä»¥å½“ MyBatis å‘ç°ä¸Šè¿°ç±»å‹çš„å±æ€§æ—¶ï¼Œå°±ä¼šä½¿ç”¨å¯¹åº”çš„ç±»å‹å¤„ç†å™¨å°†å€¼è®¾ç½®åˆ° PreparedStatement ä¸­ï¼›åŒæ ·çš„ï¼Œå½“ä» SQL ç»“æœé›†æ„å»º JavaBean æ—¶ï¼Œä¹Ÿæœ‰ç±»ä¼¼çš„è¿‡ç¨‹ã€‚
 
 
-Èç¹ûÓĞÒ»¸ö×Ô¶¨Òå¶ÔÏóÀàĞÍµÄÊôĞÔ£¬¸ÃÈçºÎ´æ´¢µ½Êı¾İ¿âÖĞ£¿±ÈÈç Contact ÀàÖĞµÄ PhoneNumber ¶ÔÏó£¬Æä ²åÈëSQL¶¨ÒåÈçÏÂ£º
+å¦‚æœæœ‰ä¸€ä¸ªè‡ªå®šä¹‰å¯¹è±¡ç±»å‹çš„å±æ€§ï¼Œè¯¥å¦‚ä½•å­˜å‚¨åˆ°æ•°æ®åº“ä¸­ï¼Ÿæ¯”å¦‚ Contact ç±»ä¸­çš„ PhoneNumber å¯¹è±¡ï¼Œå…¶ æ’å…¥SQLå®šä¹‰å¦‚ä¸‹ï¼š
 <insert id="insertContact" parameterType="Contact">
 insert into contacts(name,email,phone)
 values(#{name},#{email},#{phone})
 </insert>
  
-phone ¶ÔÏóĞèÒª´«µİ¸ø#{phone}£¬¶ø phone ¶ÔÏóÊÇ PhoneNumber ÀàĞÍ£¬¶ø MyBatis ²¢²»ÖªµÀ¸ÃÔõÑùÀ´´¦ÀíÕâ¸öÀàĞÍµÄ¶ÔÏó¡£
-ÎªÁËÈÃ MyBatis Ã÷°×ÔõÑù´¦ÀíÕâ¸ö×Ô¶¨ÒåµÄ Java ¶ÔÏóÀàĞÍ£¬¿ÉÒÔ´´½¨Ò»¸ö×Ô¶¨ÒåµÄÀàĞÍ´¦ÀíÆ÷£¬Èç PhoneTypeHandler¡£
-È»ºóÔÙ½« PhoneTypeHandler ×¢²áµ½ mybatis-config.xml ÅäÖÃÎÄ¼şÖĞ£¬ÕâÑù MyBatis ¾ÍÄÜ¹»½« PhoneNumber ÀàĞÍµÄ¶ÔÏóÖµ´æ´¢µ½ VARCHAR ÀàĞÍµÄÁĞÉÏ¡£
+phone å¯¹è±¡éœ€è¦ä¼ é€’ç»™#{phone}ï¼Œè€Œ phone å¯¹è±¡æ˜¯ PhoneNumber ç±»å‹ï¼Œè€Œ MyBatis å¹¶ä¸çŸ¥é“è¯¥æ€æ ·æ¥å¤„ç†è¿™ä¸ªç±»å‹çš„å¯¹è±¡ã€‚
+ä¸ºäº†è®© MyBatis æ˜ç™½æ€æ ·å¤„ç†è¿™ä¸ªè‡ªå®šä¹‰çš„ Java å¯¹è±¡ç±»å‹ï¼Œå¯ä»¥åˆ›å»ºä¸€ä¸ªè‡ªå®šä¹‰çš„ç±»å‹å¤„ç†å™¨ï¼Œå¦‚ PhoneTypeHandlerã€‚
+ç„¶åå†å°† PhoneTypeHandler æ³¨å†Œåˆ° mybatis-config.xml é…ç½®æ–‡ä»¶ä¸­ï¼Œè¿™æ · MyBatis å°±èƒ½å¤Ÿå°† PhoneNumber ç±»å‹çš„å¯¹è±¡å€¼å­˜å‚¨åˆ° VARCHAR ç±»å‹çš„åˆ—ä¸Šã€‚

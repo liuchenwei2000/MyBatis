@@ -12,17 +12,17 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 /**
- * MyBatis¹¤¾ßÀà
+ * MyBatiså·¥å…·ç±»
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ9ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ9æ—¥
  */
 public class MyBatisUtil {
 
 	private static class SqlSessionFactoryHolder {
 		
-		// È«¾ÖÎ¨Ò»µÄ SqlSessionFactory
+		// å…¨å±€å”¯ä¸€çš„ SqlSessionFactory
 		private static SqlSessionFactory sqlSessionFactory;
 		 
 		static {
@@ -37,14 +37,14 @@ public class MyBatisUtil {
 	}
 	
 	/**
-	 * ·µ»Ø SqlSessionFactory ÊµÀı
+	 * è¿”å› SqlSessionFactory å®ä¾‹
 	 */
 	public static SqlSessionFactory getSqlSessionFactory() {
 		return SqlSessionFactoryHolder.sqlSessionFactory;
 	}
 
 	/**
-	 * »ñÈ¡Ò»¸öÊı¾İ¿âÁ¬½Ó
+	 * è·å–ä¸€ä¸ªæ•°æ®åº“è¿æ¥
 	 */
 	public static SqlSession openSession() {
 		return getSqlSessionFactory().openSession();

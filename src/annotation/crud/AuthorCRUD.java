@@ -9,11 +9,11 @@ import annotation.Author;
 import util.MyBatisUtil;
 
 /**
- * »ùÓÚ×¢½âµÄSQLÊ¹ÓÃÊ¾Àı
+ * åŸºäºæ³¨è§£çš„SQLä½¿ç”¨ç¤ºä¾‹
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê3ÔÂ12ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´3æœˆ12æ—¥
  */
 public class AuthorCRUD {
 	
@@ -36,7 +36,7 @@ public class AuthorCRUD {
 	}
 	
 	/**
-	 * ×î»ù±¾µÄ INSERT Óï¾ä
+	 * æœ€åŸºæœ¬çš„ INSERT è¯­å¥
 	 */
 	private static void testInsertAuthor(){
 		SqlSession sqlSession = MyBatisUtil.openSession();
@@ -45,14 +45,14 @@ public class AuthorCRUD {
 			Author author = new Author("Bruce Eckel", "be@mindview.com");
 			mapper.insertAuthor(author);
 			sqlSession.commit();
-			System.out.println("author id£º" + author.getId());
+			System.out.println("author idï¼š" + author.getId());
 		} finally {
 			sqlSession.close();
 		}
 	}
 	
 	/**
-	 * ×Ô¶¯Éú³ÉÖ÷¼üµÄ INSERT Óï¾ä
+	 * è‡ªåŠ¨ç”Ÿæˆä¸»é”®çš„ INSERT è¯­å¥
 	 */
 	private static void testInsertAuthor2(){
 		SqlSession sqlSession = MyBatisUtil.openSession();
@@ -61,14 +61,14 @@ public class AuthorCRUD {
 			Author author = new Author("Josh Bloch", "jb@sun.com");
 			mapper.insertAuthor2(author);
 			sqlSession.commit();
-			System.out.println("author id£º" + author.getId());
+			System.out.println("author idï¼š" + author.getId());
 		} finally {
 			sqlSession.close();
 		}
 	}
 	
 	/**
-	 * Ö¸¶¨Ö÷¼üµÄ INSERT Óï¾ä
+	 * æŒ‡å®šä¸»é”®çš„ INSERT è¯­å¥
 	 */
 	private static void testInsertAuthor3(){
 		SqlSession sqlSession = MyBatisUtil.openSession();
@@ -77,14 +77,14 @@ public class AuthorCRUD {
 			Author author = new Author("Martin Folwer", "mf@work.com");
 			mapper.insertAuthor3(author);
 			sqlSession.commit();
-			System.out.println("author id£º" + author.getId());
+			System.out.println("author idï¼š" + author.getId());
 		} finally {
 			sqlSession.close();
 		}
 	}
 	
 	/**
-	 * »ù±¾µÄ UPDATE Óï¾ä
+	 * åŸºæœ¬çš„ UPDATE è¯­å¥
 	 */
 	private static void testUpdateAuthor(){
 		SqlSession sqlSession = MyBatisUtil.openSession();
@@ -93,7 +93,7 @@ public class AuthorCRUD {
 			Author author = new Author("a", "aa@aaa.com");
 			mapper.insertAuthor2(author);
 			sqlSession.commit();
-			System.out.println("author id£º" + author.getId());
+			System.out.println("author idï¼š" + author.getId());
 			
 			author.setName("new name");
 			author.setEmail("new_email@mail.com");
@@ -105,7 +105,7 @@ public class AuthorCRUD {
 	}
 	
 	/**
-	 * »ù±¾µÄ DELETE Óï¾ä
+	 * åŸºæœ¬çš„ DELETE è¯­å¥
 	 */
 	private static void testDeleteAuthor(){
 		SqlSession sqlSession = MyBatisUtil.openSession();
@@ -114,7 +114,7 @@ public class AuthorCRUD {
 			Author author = new Author("b", "bb@bbb.com");
 			mapper.insertAuthor2(author);
 			sqlSession.commit();
-			System.out.println("author id£º" + author.getId());
+			System.out.println("author idï¼š" + author.getId());
 			
 			mapper.deleteAuthor(author);
 			sqlSession.commit();
@@ -124,13 +124,13 @@ public class AuthorCRUD {
 	}
 	
 	/**
-	 * »ù±¾µÄ SELECT Óï¾ä
+	 * åŸºæœ¬çš„ SELECT è¯­å¥
 	 */
 	private static void testSelectAuthor(){
 		SqlSession sqlSession = MyBatisUtil.openSession();
 		try {
 			AuthorMapper mapper = sqlSession.getMapper(AuthorMapper.class);
-			System.out.println("author id=15 is£º" + mapper.findAuthorById(15));
+			System.out.println("author id=15 isï¼š" + mapper.findAuthorById(15));
 		} finally {
 			sqlSession.close();
 		}

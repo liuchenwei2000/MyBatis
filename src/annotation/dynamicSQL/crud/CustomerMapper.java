@@ -14,32 +14,32 @@ import annotation.dynamicSQL.Customer.Gender;
 /**
  * CustomerMapper
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê3ÔÂ13ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´3æœˆ13æ—¥
  */
 public interface CustomerMapper {
 
-	// Ê¹ÓÃ @SelectProvider ×¢½âÀ´´´½¨Ò»¸ö¼òµ¥µÄ SELECT Ó³ÉäÓï¾äµÄÀı×Ó
-	// type ÊôĞÔºÍ method ÊôĞÔÖ¸¶¨ÁËÒ»¸öÀà¼°ÆäÄÚ²¿µÄ·½·¨£¬ÓÃÀ´Ìá¹©ĞèÒªÖ´ĞĞµÄ SQL Óï¾ä¡£
+	// ä½¿ç”¨ @SelectProvider æ³¨è§£æ¥åˆ›å»ºä¸€ä¸ªç®€å•çš„ SELECT æ˜ å°„è¯­å¥çš„ä¾‹å­
+	// type å±æ€§å’Œ method å±æ€§æŒ‡å®šäº†ä¸€ä¸ªç±»åŠå…¶å†…éƒ¨çš„æ–¹æ³•ï¼Œç”¨æ¥æä¾›éœ€è¦æ‰§è¡Œçš„ SQL è¯­å¥ã€‚
 	@SelectProvider(type = CustomerSelectProvider.class, method = "findCustomerByGender")
-	public Customer findByGender(Gender gender);// Ò»¸ö²ÎÊı
+	public Customer findByGender(Gender gender);// ä¸€ä¸ªå‚æ•°
 	
 	@SelectProvider(type = CustomerSelectProvider.class, method = "findAll")
-	public Customer findAllCustomers();// ÎŞ²ÎÊı
+	public Customer findAllCustomers();// æ— å‚æ•°
 	
 	@SelectProvider(type = CustomerSelectProvider.class, method = "findByCondition")
-	public Customer findByCondition(String name, Gender gender);// ¶à¸ö²ÎÊı
+	public Customer findByCondition(String name, Gender gender);// å¤šä¸ªå‚æ•°
 	
-	// Ê¹ÓÃ @InsertProvider ×¢½â´´½¨¶¯Ì¬µÄ INSERT Óï¾ä
+	// ä½¿ç”¨ @InsertProvider æ³¨è§£åˆ›å»ºåŠ¨æ€çš„ INSERT è¯­å¥
 	@InsertProvider(type = CustomerInsertProvider.class, method = "insertCustomer")
 	public int addCustomer(Customer customer);
 	
-	// Ê¹ÓÃ @UpdateProvider ×¢½â´´½¨¶¯Ì¬µÄ UPDATE Óï¾ä
+	// ä½¿ç”¨ @UpdateProvider æ³¨è§£åˆ›å»ºåŠ¨æ€çš„ UPDATE è¯­å¥
 	@UpdateProvider(type = CustomerUpdateProvider.class, method = "updateCustomer")
 	public int editCustomer(Customer customer);
 	
-	// Ê¹ÓÃ @DeleteProvider ×¢½â´´½¨¶¯Ì¬µÄ DELETE Óï¾ä
+	// ä½¿ç”¨ @DeleteProvider æ³¨è§£åˆ›å»ºåŠ¨æ€çš„ DELETE è¯­å¥
 	@DeleteProvider(type = CustomerDeleteProvider.class, method = "deleteCustomer")
 	public int deleteCustomer(Customer customer);
 }

@@ -4,22 +4,22 @@
 package more.blob;
 
 /**
- * ÓÃ»§Í¼Æ¬
+ * ç”¨æˆ·å›¾ç‰‡
  * <p>
- * MyBatis Ìá¹©ÁËÄÚ½¨µÄ¶Ô CLOB/BLOB ÀàĞÍÁĞµÄÓ³Éä´¦ÀíÖ§³Ö¡£
+ * MyBatis æä¾›äº†å†…å»ºçš„å¯¹ CLOB/BLOB ç±»å‹åˆ—çš„æ˜ å°„å¤„ç†æ”¯æŒã€‚
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ13ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ13æ—¥
  */
 public class UserPic {
 
 	private int id;
 	private String name;
 	
-	//  Ä¬ÈÏÇé¿öÏÂ£¬ MyBatis ½« CLOB ÀàĞÍÓ³Éäµ½ java.lang.String ÀàĞÍÉÏ£¬¶ø°Ñ BLOB ÀàĞÍÓ³Éäµ½ byte[] ÀàĞÍÉÏ¡£
-	private byte[] pic;// BLOB ×Ö¶Î
-	private String bio;// CLOB ×Ö¶Î
+	//  é»˜è®¤æƒ…å†µä¸‹ï¼Œ MyBatis å°† CLOB ç±»å‹æ˜ å°„åˆ° java.lang.String ç±»å‹ä¸Šï¼Œè€ŒæŠŠ BLOB ç±»å‹æ˜ å°„åˆ° byte[] ç±»å‹ä¸Šã€‚
+	private byte[] pic;// BLOB å­—æ®µ
+	private String bio;// CLOB å­—æ®µ
 	
 	public UserPic() {
 		super();

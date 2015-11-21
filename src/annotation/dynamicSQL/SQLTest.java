@@ -6,14 +6,14 @@ package annotation.dynamicSQL;
 import org.apache.ibatis.jdbc.SQL;
 
 /**
- * SQL Æ´½Ó¹¤¾ßÀàÊ¾Àı
+ * SQL æ‹¼æ¥å·¥å…·ç±»ç¤ºä¾‹
  * <p>
- * Ê¹ÓÃ×Ö·û´®Æ´½ÓµÄ·½·¨¹¹½¨ SQL Óï¾ä·Ç³£À§ÄÑÇÒÈİÒ×³ö´í£¬Òò´Ë MyBaits Ìá¹©ÁË
- * SQL ¹¤¾ßÀà²»ÔÙÊ¹ÓÃ×Ö·û´®Æ´½ÓµÄ·½Ê½£¬´Ó¶ø¼ò»¯¹¹Ôì¶¯Ì¬ SQL Óï¾ä¡£
+ * ä½¿ç”¨å­—ç¬¦ä¸²æ‹¼æ¥çš„æ–¹æ³•æ„å»º SQL è¯­å¥éå¸¸å›°éš¾ä¸”å®¹æ˜“å‡ºé”™ï¼Œå› æ­¤ MyBaits æä¾›äº†
+ * SQL å·¥å…·ç±»ä¸å†ä½¿ç”¨å­—ç¬¦ä¸²æ‹¼æ¥çš„æ–¹å¼ï¼Œä»è€Œç®€åŒ–æ„é€ åŠ¨æ€ SQL è¯­å¥ã€‚
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê3ÔÂ13ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´3æœˆ13æ—¥
  */
 public class SQLTest {
 
@@ -21,7 +21,7 @@ public class SQLTest {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// SQL ¹¤¾ßÀà»áÓÃºÏÊÊµÄ¿Õ¸ñÇ°×ººÍºó×ºÀ´¹¹Ôì SQL Óï¾ä¡£
+		// SQL å·¥å…·ç±»ä¼šç”¨åˆé€‚çš„ç©ºæ ¼å‰ç¼€å’Œåç¼€æ¥æ„é€  SQL è¯­å¥ã€‚
 		SQL sql1 = new SQL() {
 			{
 				SELECT("id, name as title, isbn");
@@ -29,9 +29,9 @@ public class SQLTest {
 				WHERE("id=1");
 			}
 		};
-		System.out.println("¡¾sql1¡¿\n" + sql1.toString());
+		System.out.println("ã€sql1ã€‘\n" + sql1.toString());
 		
-		// Ò»¸ö¸ü¸´ÔÓµÄ SQL Óï¾ä¹¹Ôì¹ı³Ì
+		// ä¸€ä¸ªæ›´å¤æ‚çš„ SQL è¯­å¥æ„é€ è¿‡ç¨‹
 		SQL sql2 = new SQL() {
 			{
 				SELECT("T0.id, T0.name, T1.id, T1.name");
@@ -42,9 +42,9 @@ public class SQLTest {
 				ORDER_BY("price desc");
 			}
 		};
-		System.out.println("¡¾sql2¡¿\n" + sql2.toString());
+		System.out.println("ã€sql2ã€‘\n" + sql2.toString());
 		
-		// INSERT Óï¾äÊ¾Àı
+		// INSERT è¯­å¥ç¤ºä¾‹
 		SQL sql3 = new SQL() {
 			{
 				INSERT_INTO("books");
@@ -52,9 +52,9 @@ public class SQLTest {
 				VALUES("isbn", "127787681");
 			}
 		};
-		System.out.println("¡¾sql3¡¿\n" + sql3.toString());
+		System.out.println("ã€sql3ã€‘\n" + sql3.toString());
 		
-		// UPDATE Óï¾äÊ¾Àı
+		// UPDATE è¯­å¥ç¤ºä¾‹
 		SQL sql4 = new SQL() {
 			{
 				UPDATE("books");
@@ -62,15 +62,15 @@ public class SQLTest {
 				WHERE("id=1");
 			}
 		};
-		System.out.println("¡¾sql4¡¿\n" + sql4.toString());
+		System.out.println("ã€sql4ã€‘\n" + sql4.toString());
 
-		// DELETE Óï¾äÊ¾Àı
+		// DELETE è¯­å¥ç¤ºä¾‹
 		SQL sql5 = new SQL() {
 			{
 				DELETE_FROM("books");
 				WHERE("id=1");
 			}
 		};
-		System.out.println("¡¾sql5¡¿\n" + sql5.toString());
+		System.out.println("ã€sql5ã€‘\n" + sql5.toString());
 	}
 }

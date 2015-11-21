@@ -13,11 +13,11 @@ import resultmap.Contact;
 import util.MyBatisUtil;
 
 /**
- * ¶àĞĞ½á¹û¼¯Ó³Éä³É MapÑİÊ¾
+ * å¤šè¡Œç»“æœé›†æ˜ å°„æˆ Mapæ¼”ç¤º
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê3ÔÂ9ÈÕ 
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´3æœˆ9æ—¥ 
  */
 public class ContactCRUD {
 	
@@ -34,16 +34,16 @@ public class ContactCRUD {
 	}
 	
 	/**
-	 * ²éÑ¯¶àÌõ¼ÇÂ¼µ½ HashMap
+	 * æŸ¥è¯¢å¤šæ¡è®°å½•åˆ° HashMap
 	 */
 	private static void selectAllContacts() {
 		SqlSession sqlSession = MyBatisUtil.openSession();
 		try {
 			
 			/*
-			 * Èç¹ûÒ»¸öSQLÓï¾ä·µ»Ø¶àĞĞ¼ÇÂ¼£¬¶øÓÖÏëÒÔ HashMap µÄĞÎÊ½´æ´¢½á¹û¼¯£¬
-			 * ¿ÉÒÔ½«¼ÇÂ¼µÄÄ³ÁĞÖµ£¨±¾ÀıÊÇ id ÁĞ£©×÷Îª key Öµ£¬¼ÇÂ¼×ÔÉí×÷Îª value Öµ¡£
-			 * È»ºóÊ¹ÓÃ sqlSession.selectMap()·½·¨½øĞĞ²éÑ¯£º
+			 * å¦‚æœä¸€ä¸ªSQLè¯­å¥è¿”å›å¤šè¡Œè®°å½•ï¼Œè€Œåˆæƒ³ä»¥ HashMap çš„å½¢å¼å­˜å‚¨ç»“æœé›†ï¼Œ
+			 * å¯ä»¥å°†è®°å½•çš„æŸåˆ—å€¼ï¼ˆæœ¬ä¾‹æ˜¯ id åˆ—ï¼‰ä½œä¸º key å€¼ï¼Œè®°å½•è‡ªèº«ä½œä¸º value å€¼ã€‚
+			 * ç„¶åä½¿ç”¨ sqlSession.selectMap()æ–¹æ³•è¿›è¡ŒæŸ¥è¯¢ï¼š
 			 */
 			Map<Integer, Contact> resultMap = 
 					sqlSession.selectMap("more.resultmap.ContactMapper.findAllContacts", "id");
@@ -58,7 +58,7 @@ public class ContactCRUD {
 	}
 	
 	/**
-	 * ½«¶àÌõ¼ÇÂ¼µÄ½á¹û¼¯Ç¿ÖÆ·ÖÒ³
+	 * å°†å¤šæ¡è®°å½•çš„ç»“æœé›†å¼ºåˆ¶åˆ†é¡µ
 	 */
 	private static void paginateResultSets() {
 		SqlSession sqlSession = MyBatisUtil.openSession();
@@ -67,33 +67,33 @@ public class ContactCRUD {
 			ContactMapper mapper = sqlSession.getMapper(ContactMapper.class);
 			
 			/*
-			 * ¿ÉÒÔÊ¹ÓÃ RowBounds ÖğÒ³¼ÓÔØ±íÊı¾İ£¬RowBounds ¶ÔÏó¿ÉÒÔÊ¹ÓÃ offset ºÍ limit ²ÎÊıÀ´¹¹½¨¡£
-			 * ²ÎÊı offset ±íÊ¾¿ªÊ¼Î»ÖÃ£¬¶ø limit ±íÊ¾Òª»ñÈ¡¼ÇÂ¼µÄÊıÄ¿¡£
+			 * å¯ä»¥ä½¿ç”¨ RowBounds é€é¡µåŠ è½½è¡¨æ•°æ®ï¼ŒRowBounds å¯¹è±¡å¯ä»¥ä½¿ç”¨ offset å’Œ limit å‚æ•°æ¥æ„å»ºã€‚
+			 * å‚æ•° offset è¡¨ç¤ºå¼€å§‹ä½ç½®ï¼Œè€Œ limit è¡¨ç¤ºè¦è·å–è®°å½•çš„æ•°ç›®ã€‚
 			 */
-			// Ç°5ÌõÊı¾İ
+			// å‰5æ¡æ•°æ®
 			int offset = 0, limit = 5;
 			RowBounds rowBounds = new RowBounds(offset, limit);
 			List<Contact> page1 = mapper.findAllContacts(rowBounds);
-			System.out.println("page1£º" + page1);
-			// ½ÓÏÂÀ´µÄ5ÌõÊı¾İ
+			System.out.println("page1ï¼š" + page1);
+			// æ¥ä¸‹æ¥çš„5æ¡æ•°æ®
 			offset = 5;
 			rowBounds = new RowBounds(offset, limit);
 			List<Contact> page2 = mapper.findAllContacts(rowBounds);
-			System.out.println("page2£º" + page2);
+			System.out.println("page2ï¼š" + page2);
 		} finally {
 			sqlSession.close();
 		}
 	}
 	
 	/**
-	 * Ê¹ÓÃ×Ô¶¨Òå ResultHandler ²éÑ¯¶àÌõ¼ÇÂ¼
+	 * ä½¿ç”¨è‡ªå®šä¹‰ ResultHandler æŸ¥è¯¢å¤šæ¡è®°å½•
 	 */
 	private static void selectAllContactsUseResultHandler() {
 		SqlSession sqlSession = MyBatisUtil.openSession();
 		try {
 			
 			/*
-			 * Í¨¹ıÏÂÃæµÄµ÷ÓÃ·½Ê½Ê¹ÓÃ×Ô¶¨Òå ResultHandler
+			 * é€šè¿‡ä¸‹é¢çš„è°ƒç”¨æ–¹å¼ä½¿ç”¨è‡ªå®šä¹‰ ResultHandler
 			 */
 			IdNameResultHandler handler = new IdNameResultHandler();
 			sqlSession.select("more.resultmap.ContactMapper.findAllContacts", handler);

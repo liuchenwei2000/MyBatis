@@ -6,19 +6,19 @@ package more.blob;
 /**
  * UserPicMapper
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ13ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ13æ—¥
  */
 public interface UserPicMapper {
 
 	/**
-	 * ĞÂÔöÒ»¸öUserPic
+	 * æ–°å¢ä¸€ä¸ªUserPic
 	 */
 	public void insertUserPic(UserPic userPic);
 	
 	/**
-	 * ¸ù¾İid»ñÈ¡UserPic
+	 * æ ¹æ®idè·å–UserPic
 	 */
 	public UserPic getUserPic(int id);
 }

@@ -10,29 +10,29 @@ import org.apache.ibatis.jdbc.SQL;
 import annotation.dynamicSQL.Customer.Gender;
 
 /**
- * SELECT Óï¾äÌá¹©Àà
+ * SELECT è¯­å¥æä¾›ç±»
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê3ÔÂ13ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´3æœˆ13æ—¥
  */
 public class CustomerSelectProvider {
 	
 	/**
-	 * ¶¯Ì¬ SQL provider ·½·¨¿ÉÒÔ½ÓÊÕµÄ²ÎÊıÓĞ£º
-	 * 1£¬ºÍÓ³ÉäÆ÷ Mapper ½Ó¿ÚµÄ·½·¨Í¬ÀàĞÍµÄ²ÎÊı;
-	 * 2£¬ÎŞ²ÎÊı;
-	 * 3£¬java.util.Map¡£
+	 * åŠ¨æ€ SQL provider æ–¹æ³•å¯ä»¥æ¥æ”¶çš„å‚æ•°æœ‰ï¼š
+	 * 1ï¼Œå’Œæ˜ å°„å™¨ Mapper æ¥å£çš„æ–¹æ³•åŒç±»å‹çš„å‚æ•°;
+	 * 2ï¼Œæ— å‚æ•°;
+	 * 3ï¼Œjava.util.Mapã€‚
 	 */
 
-	public String findCustomerByGender(Gender gender) {// ºÍÓ³ÉäÆ÷ Mapper ½Ó¿ÚµÄ·½·¨Í¬ÀàĞÍµÄ²ÎÊı
-		// ´«Í³SQLÆ´½Ó Ä£Äâ¶¯Ì¬ SELECT SQL µÄÉú³É
+	public String findCustomerByGender(Gender gender) {// å’Œæ˜ å°„å™¨ Mapper æ¥å£çš„æ–¹æ³•åŒç±»å‹çš„å‚æ•°
+		// ä¼ ç»ŸSQLæ‹¼æ¥ æ¨¡æ‹ŸåŠ¨æ€ SELECT SQL çš„ç”Ÿæˆ
 		return "select id, name, gender from customers where gender="
 				+ (gender == Gender.MALE ? 0 : 1);
 	}
 	
-	public String findAll() {// ÎŞ²ÎÊı
-		// SQL¹¤¾ßÀà Ä£Äâ¶¯Ì¬ SELECT SQL µÄÉú³É
+	public String findAll() {// æ— å‚æ•°
+		// SQLå·¥å…·ç±» æ¨¡æ‹ŸåŠ¨æ€ SELECT SQL çš„ç”Ÿæˆ
 		return new SQL() {
 			{
 				SELECT("id, name, gender");
@@ -43,13 +43,13 @@ public class CustomerSelectProvider {
 	}
 	
 	/**
-	 * Èç¹ûÓ³ÉäÆ÷ Mapper ½Ó¿ÚÓĞ¶à¸öÊäÈë²ÎÊı£¬¿ÉÒÔÊ¹ÓÃ²ÎÊıÀàĞÍÎª java.util.Map µÄ·½·¨×÷Îª SQL provider ·½·¨¡£
-	 * È»ºóÓ³ÉäÆ÷ Mapper ½Ó¿Ú·½·¨ËùÓĞµÄÊäÈë²ÎÊı½«»á±»·Åµ½ map ÖĞ£¬ÒÔ param1, param2 µÈµÈ×÷Îª key£¬½«ÊäÈë²ÎÊı°´Ğò×÷Îª value¡£
+	 * å¦‚æœæ˜ å°„å™¨ Mapper æ¥å£æœ‰å¤šä¸ªè¾“å…¥å‚æ•°ï¼Œå¯ä»¥ä½¿ç”¨å‚æ•°ç±»å‹ä¸º java.util.Map çš„æ–¹æ³•ä½œä¸º SQL provider æ–¹æ³•ã€‚
+	 * ç„¶åæ˜ å°„å™¨ Mapper æ¥å£æ–¹æ³•æ‰€æœ‰çš„è¾“å…¥å‚æ•°å°†ä¼šè¢«æ”¾åˆ° map ä¸­ï¼Œä»¥ param1, param2 ç­‰ç­‰ä½œä¸º keyï¼Œå°†è¾“å…¥å‚æ•°æŒ‰åºä½œä¸º valueã€‚
 	 */
 	public String findByCondition(Map<String, Object> map) {// java.util.Map
 		final String name = (String) map.get("param1");
 		final Gender gender = (Gender) map.get("param2");
-		// SQL¹¤¾ßÀà Ä£Äâ¶¯Ì¬ SELECT SQL µÄÉú³É
+		// SQLå·¥å…·ç±» æ¨¡æ‹ŸåŠ¨æ€ SELECT SQL çš„ç”Ÿæˆ
 		return new SQL() {
 			{
 				SELECT("id, name, gender");

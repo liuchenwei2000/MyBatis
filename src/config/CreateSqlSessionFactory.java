@@ -20,27 +20,27 @@ import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
 /**
- * ´´½¨ SqlSessionFactory µÄ·½Ê½
+ * åˆ›å»º SqlSessionFactory çš„æ–¹å¼
  * <p>
- * MyBatis ×î¹Ø¼üµÄ×é³É²¿·ÖÊÇ SqlSessionFactory£¬¿ÉÒÔ´ÓÖĞ»ñÈ¡ SqlSession£¬²¢Ö´ĞĞÓ³ÉäµÄ SQL Óï¾ä¡£
- * SqlSessionFactory ¶ÔÏó¿ÉÒÔÍ¨¹ı»ùÓÚ XML µÄÅäÖÃĞÅÏ¢»òÕß Java API ´´½¨¡£
+ * MyBatis æœ€å…³é”®çš„ç»„æˆéƒ¨åˆ†æ˜¯ SqlSessionFactoryï¼Œå¯ä»¥ä»ä¸­è·å– SqlSessionï¼Œå¹¶æ‰§è¡Œæ˜ å°„çš„ SQL è¯­å¥ã€‚
+ * SqlSessionFactory å¯¹è±¡å¯ä»¥é€šè¿‡åŸºäº XML çš„é…ç½®ä¿¡æ¯æˆ–è€… Java API åˆ›å»ºã€‚
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ9ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ9æ—¥
  */
 public class CreateSqlSessionFactory {
 	
 	/**
-	 * »ùÓÚXMLÅäÖÃÎÄ¼ş´´½¨ SqlSessionFactory
+	 * åŸºäºXMLé…ç½®æ–‡ä»¶åˆ›å»º SqlSessionFactory
 	 */
 	@SuppressWarnings("unused")
 	public static void createByXML() {
 		InputStream inputStream = null;
 		try {
 			inputStream = Resources.getResourceAsStream("config/mybatis-config.xml");
-			// ĞèÒªÎªÃ¿Ò»¸öÊı¾İ¿â´´½¨Ò»¸ö SqlSessionFactory
-			// ´´½¨ SqlSessionFactory Ê±£¬Èç¹ûÃ»ÓĞÃ÷È·Ö¸¶¨ environment id£¬Ôò»áÊ¹ÓÃÄ¬ÈÏµÄ  environment
+			// éœ€è¦ä¸ºæ¯ä¸€ä¸ªæ•°æ®åº“åˆ›å»ºä¸€ä¸ª SqlSessionFactory
+			// åˆ›å»º SqlSessionFactory æ—¶ï¼Œå¦‚æœæ²¡æœ‰æ˜ç¡®æŒ‡å®š environment idï¼Œåˆ™ä¼šä½¿ç”¨é»˜è®¤çš„  environment
 			SqlSessionFactory devSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 			SqlSessionFactory proSessionFactory = new SqlSessionFactoryBuilder().build(inputStream, "production");
 		} catch (IOException e) {
@@ -49,21 +49,21 @@ public class CreateSqlSessionFactory {
 	}
 	
 	/**
-	 * »ùÓÚ Java API ´´½¨ SqlSessionFactory
+	 * åŸºäº Java API åˆ›å»º SqlSessionFactory
 	 */
 	@SuppressWarnings("unused")
 	public static void createByJavaAPI() {
 		SqlSessionFactory sqlSessionFactory = null;
 		try {
-			DataSource dataSource = createDataSourceFactory(0).getDataSource();// Êı¾İÔ´
-			TransactionFactory transactionFactory = new JdbcTransactionFactory();// ÊÂÎñ¹ÜÀíÆ÷
-			Environment environment = new Environment("development", transactionFactory, dataSource);// Êı¾İ¿â»·¾³
+			DataSource dataSource = createDataSourceFactory(0).getDataSource();// æ•°æ®æº
+			TransactionFactory transactionFactory = new JdbcTransactionFactory();// äº‹åŠ¡ç®¡ç†å™¨
+			Environment environment = new Environment("development", transactionFactory, dataSource);// æ•°æ®åº“ç¯å¢ƒ
 			
-			Configuration configuration = new Configuration(environment);// ÅäÖÃ¶ÔÏó
-			configuration.getTypeAliasRegistry().registerAlias("contact", Contact.class);// ×¢²áÀà±ğÃû
-			configuration.getTypeHandlerRegistry().register(PhoneNumber.class, PhoneTypeHandler.class);// ×¢²á×Ô¶¨ÒåÀàĞÍ´¦ÀíÆ÷
-			configuration.setCacheEnabled(true);// È«¾Ö²ÎÊıÉèÖÃ
-			configuration.addMapper(ContactMapper.class);// ×¢²á Mapper
+			Configuration configuration = new Configuration(environment);// é…ç½®å¯¹è±¡
+			configuration.getTypeAliasRegistry().registerAlias("contact", Contact.class);// æ³¨å†Œç±»åˆ«å
+			configuration.getTypeHandlerRegistry().register(PhoneNumber.class, PhoneTypeHandler.class);// æ³¨å†Œè‡ªå®šä¹‰ç±»å‹å¤„ç†å™¨
+			configuration.setCacheEnabled(true);// å…¨å±€å‚æ•°è®¾ç½®
+			configuration.addMapper(ContactMapper.class);// æ³¨å†Œ Mapper
 			
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
 		} catch (Exception e) {

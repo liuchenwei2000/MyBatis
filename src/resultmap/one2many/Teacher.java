@@ -6,11 +6,11 @@ package resultmap.one2many;
 import java.util.List;
 
 /**
- * ½ÌÊ¦
+ * æ•™å¸ˆ
  * 
- * @author Áõ³¿Î°
+ * @author åˆ˜æ™¨ä¼Ÿ
  * 
- * ´´½¨ÈÕÆÚ£º2015Äê2ÔÂ13ÈÕ
+ * åˆ›å»ºæ—¥æœŸï¼š2015å¹´2æœˆ13æ—¥
  */
 public class Teacher {
 	
@@ -18,7 +18,7 @@ public class Teacher {
 	private String name;
 	private String email;
 	
-	// Ã¿Ò»¸ö Teacher ¿ÉÒÔÓĞ¶à¸ö¹ØÁªµÄ Course£¬ÕâÊÇÒ»ÖÖÒ»¶Ô¶àµÄ¹ØÏµ
+	// æ¯ä¸€ä¸ª Teacher å¯ä»¥æœ‰å¤šä¸ªå…³è”çš„ Courseï¼Œè¿™æ˜¯ä¸€ç§ä¸€å¯¹å¤šçš„å…³ç³»
 	private List<Course> courses;
 
 	public Integer getId() {
